@@ -557,7 +557,7 @@ function focus_type_ticks(type){
       break;
       default:
         return [{v: 0, f: '0'},{v: 100, f: '100'},
-                {v: 200, f: '200'},{v: 300, f: '300'}, {v: 400, f: '400'}];;
+                {v: 200, f: '200'},{v: 300, f: '300'}, {v: 400, f: '400'}];
       break;
   }  
 }
