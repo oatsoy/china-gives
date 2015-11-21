@@ -359,6 +359,10 @@ footer.site-footer .row .footer-copy-text {
 
 }
 
+footer a.share-btn {
+    padding: 12px 6px;
+}
+
 /* Main page sections */
 
 /* Overview */
@@ -531,11 +535,11 @@ section.charts .container-fluid.charts-container {
 }
 
 .fix-charts #charts-container.closed {
-    top: -310px;
+    top: -344px;
 }
 
 .chart-wrapper {
-    height: calc(100vh - 148px);
+    height: calc(100vh - 182px);
     -webkit-transition: all 1s ease-out;
     -moz-transition: all 1s ease-out;
     -o-transition: all 1s ease-out;
@@ -550,7 +554,7 @@ section.charts .container-fluid.charts-container {
 
 #series_chart_div {
     width: 100%; 
-    height: calc(100vh - 148px);
+    height: calc(100vh - 182px);
     overflow: hidden;
         background-color: transparent;
 }
@@ -568,9 +572,17 @@ section.charts .container-fluid.charts-container {
     background-color:  rgba(16, 26, 57, .85);
 }
 
+.charts-container .chart-options {
+    padding-top: 14px;
+}
+
+.charts-container .chart-options:last-child {
+    padding-bottom: 14px;
+}
+
 .charts-container .chart-options a {
     display: inline-block;
-    padding: 14px;
+    padding: 0 14px;
 }
 
 .charts-container .chart-options a {
@@ -604,12 +616,12 @@ section.charts .container-fluid.charts-container {
 
 .charts-container .chart-options a.active span {
     box-shadow: 0 2px 0 #fff;
-    padding-bottom: 6px;
+    font-weight: 600;
 }
 
 .charts-container .chart-options .charts-toggle {
     position: absolute;
-    bottom: 3px;
+    bottom: 7px;
     right: 10px;
     width: 30px;
     text-align: center;
@@ -1176,5 +1188,5 @@ section#people .container {
 
 .maps .nav-pills.chart-options>li.active>a>span {
     box-shadow: 0 2px 0 #fff;
-    padding-bottom: 8px;
+    font-weight: 600;
 }

@@ -423,7 +423,7 @@ function focus_options(ch_data){
           }
         },  
         vAxis: {
-          title: trsl('Focus Areas'),
+          title: trsl('Philanthropic Causes'),
           gridlineColor: 'transparent',
           baselineColor: 'black',
           ticks: [{v: 0, f: ''},{v: 1, f: '1'},
@@ -685,7 +685,7 @@ function init_chart_onclick(){
         if ($(elem).length > 0) {
           if (($('#page-top').hasClass('fix-charts') || will_fix(window)) && !is_chart_closed) {
             $('html, body').animate({
-              scrollTop: elem.offset().top - 430
+              scrollTop: elem.offset().top - 466
             }, 2000);
           }
           else {
