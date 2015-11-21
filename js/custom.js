@@ -48,6 +48,7 @@ function fix_chart(that){
   if (must_fix(that)) {
     if (!wrap.hasClass("fix-charts")){
       wrap.addClass("fix-charts");
+      $('#chart-tooltip').css('display', 'none');
       get_chart_container_sizes();
       make_routing();
     }
@@ -702,7 +703,6 @@ function init_chart_onclick(){
     google.visualization.events.addListener(current_chart, 'onmouseover', function(e) {
       var attr = 'data-' + get_param();
       var row = e.row;
-      console.log(e);
       if (row || row == 0){     
         var elem = $('['+ attr + '="' + row + '"]');
         if (elem.length > 0){ 
@@ -713,8 +713,15 @@ function init_chart_onclick(){
             $('.chart-wrapper').append(tooltip);
           }
           tooltip.find('b').html(person_name);
-          tooltip.css('left', currentMousePos.x + 15);
-          tooltip.css('top', currentMousePos.y - 35);
+          var is_fixed = $('body').hasClass('fix-charts');
+          if (!is_fixed){
+            tooltip.css('left', currentMousePos.x + 15);
+            tooltip.css('top', currentMousePos.y - 35);
+          } else {
+            var scrollTop = $(document).scrollTop();
+            tooltip.css('left', currentMousePos.x + 15);
+            tooltip.css('top', currentMousePos.y - 35 - scrollTop);
+          }
           tooltip.css('display', 'block');
         }
       }
