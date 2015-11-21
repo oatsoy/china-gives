@@ -51,12 +51,17 @@ hr {
     border-color: #BF364A;
 }
 
-.text-primary, a {
+.text-primary {
     color: #BF364A;
 }
 
+a {
+    color: rgba(165,28,48,0.8);
+}
+
 a:hover, a:focus {
-    color: #A51C30;
+    color: rgba(165,28,48,1);
+    text-decoration: none;
 }
 
 
@@ -292,17 +297,43 @@ header .header-content a.btn {
 }
 
 .lrn-mr-btn {
-    color: rgba(255,255,255,.7);
-    font-size: 14px;
     margin: 50px 0 0 -50px;
     display: inline-block;
     position: absolute;
     width: 100px;
     left: 50%;
+    bottom: 50px;
 }
 
-.lrn-mr-btn:hover, .lrn-mr-btn:focus {
+@media (min-width: 992px) {
+ 
+    .lrn-mr-btn {
+        bottom: 100px;
+    }
+
+}
+
+.next-section {
+    color: rgba(255,255,255,.7);
+    font-size: 16px;
+}
+
+.next-section:hover,
+.next-section:focus,
+.next-section:active {
     color: rgba(255,255,255,1);
+    text-decoration: none;
+}
+
+.next-section.dark {
+    color: rgba(165,28,48,.8);
+}
+
+.next-section.dark:hover,
+.next-section.dark:focus,
+.next-section.dark:active {
+    color: rgba(165,28,48,1);
+    text-decoration: none;
 }
 
 /* Footer */
@@ -337,11 +368,13 @@ section.overview .metrics p.metric-lg {
     font-weight: 300;
 }
 
-section.overview .key-findings {
+/* Findings */
+
+section.findings .key-findings {
     font-size: 16px;
 }
 
-section.bg-image.overview div.background-image {
+section.bg-image.findings div.background-image {
     background-image: url(../img/home/overview.jpg);
 }
 
@@ -621,14 +654,14 @@ section#people .container {
     padding-bottom: 5px; /* to make box shadow and outlines possible on last rows elements */
 }
 
-.circle {
+.person-box .circle {
     width: 160px;
     height: 160px;
     position: relative;
     margin: 0 auto;
 }
 
-.circle-text {
+.person-box .circle-text {
     width: 100%;
     position: absolute;
     z-index: -75;
@@ -640,16 +673,20 @@ section#people .container {
     transition: all .5s ease;
 }
 
-.circle-text:after {
+.person-box .circle-text:after {
     content: "";
     display: block;
     width: 100%;
     height: 0;
     padding-bottom: 100%;
-    background: #4E84C4; 
+    background: rgba(41, 51, 82, .8);
     -moz-border-radius: 50%; 
     -webkit-border-radius: 50%; 
     border-radius: 50%;
+}
+
+.person-box:hover .circle-text:after {
+    background: rgba(41, 51, 82, 1);
 }
 
 .person-box.selected .circle-text:before {
