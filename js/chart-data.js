@@ -26,7 +26,11 @@ function chart_data(){
               },
             {% endfor %}
         ];
-    return chart_data;    
+        return chart_data.sort(function(a, b){
+            if (b['Industry'] == 'Other')
+                return -1;
+            return 1;
+        });
 }
 
 function chart_month_data(){
