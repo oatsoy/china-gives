@@ -94,11 +94,11 @@ function maps_helper(){
 		},
 		get_plot_color:	function (val){
 			var param = get_param();
-			if (param == 'philanthropists')
+			if (param == 'origins')
 				return '#ff5454';
-			if (param == 'donations')
+			if (param == 'destinations')
 				return '#fffd72';
-			if (param == 'movement')
+			if (param == 'flow')
 				return '#F08219';
 			return '#fff';
 		},

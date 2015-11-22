@@ -15,7 +15,7 @@ $(function(){
 
 	var type = get_param();
 	if (!type)
-		type = 'philanthropists';
+		type = 'origins';
 	make_maps_routing(type);	
 
 	map_height();
@@ -29,13 +29,13 @@ function make_maps_routing(type){
 	var base_url = get_base_url();
 	history.pushState('', '', base_url + that.attr('href'));
 	switch (type) {
-      case 'philanthropists':
+      case 'origins':
         load_map_philanthropists_data();
       break;
-      case 'donations':
+      case 'destinations':
         load_map_donatoin_data();
       break;
-      case 'movement':
+      case 'flow':
         load_map_movement_data();
       break;  
       default:
@@ -142,13 +142,13 @@ function load_map_movement_data() {
 	    dummy_path.setAttribute('d', element.attr('d'));
 		svg.append(dummy_path);		
 		$(dummy_path).on('mouseover', function(event) {
-			if (get_param() == 'movement') {
+			if (get_param() == 'flow') {
 				$('.mapcontainer path[data-id^="link_"]').attr('stroke-opacity', '0.15').attr('stroke-width', 2).attr('stroke','#FFFFFF');
 				element.attr('stroke-opacity', '0.75').attr('stroke-width', 3).attr('stroke','#8FFD9B');
 				element.trigger('mouseover');
 			}
         }).on('mouseleave', function(event){
-        	if (get_param() == 'movement') {
+        	if (get_param() == 'flow') {
 	        	element.attr('stroke-opacity', '0.15').attr('stroke-width', 2).attr('stroke','#FFFFFF');         	
 				element.trigger('mouseleave');			
 	        	var to_el = $(event.relatedTarget);
