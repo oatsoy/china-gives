@@ -24,7 +24,7 @@ language: en
     </div>
 </header>
 
-<section id="overview" class="overview bg-dark wow fadeIn">
+<section id="overview" class="with-nxt-sct-btn overview bg-dark wow fadeIn">
     <div class="background-image"></div>
     <div class="container">
         <div class="row">
@@ -65,7 +65,7 @@ language: en
     </div> 
 </section>
 
-<section id="findings" class="findings bg-dark bg-image wow fadeIn">
+<section id="findings" class="with-nxt-sct-btn findings bg-dark bg-image wow fadeIn">
     <div class="background-image"></div>
     <div class="container">
         <div class="row">
@@ -100,7 +100,7 @@ language: en
     </div> 
 </section>
 
-<section id="top-givers">
+<section id="top-givers" class="with-nxt-sct-btn">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
@@ -164,6 +164,10 @@ language: en
                             <div class="circle-text {% if person.['Image URL'] != 0 %}with-bg-image{% endif %}">
                                 {% if person.['Image URL'] != 0 %}
                                 <div class="giver-image" style="background-image: url({{ person.['Image URL'] }});"></div>
+                                {% else %}
+                                <div class="person-placeholder">
+                                    <i class="fa fa-user"></i>
+                                </div>
                                 {% endif %}
                                 <div class="content">
                                     <div>{{ b }}</div>
@@ -336,7 +340,7 @@ language: en
     </div>
 </section>
 
-<section id="gender">
+<section id="gender" class="with-nxt-sct-btn">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">

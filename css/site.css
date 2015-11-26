@@ -15,6 +15,10 @@ section img {
     max-width: 100%;
 }
 
+section.with-nxt-sct-btn {
+    padding-bottom: 50px;
+}
+
 .no-mg-btm {
     margin-bottom: 0;
 }
@@ -305,14 +309,6 @@ header .header-content a.btn {
     bottom: 50px;
 }
 
-@media (min-width: 992px) {
- 
-    .lrn-mr-btn {
-        bottom: 100px;
-    }
-
-}
-
 .next-section {
     color: rgba(255,255,255,.7);
     font-size: 16px;
@@ -383,6 +379,20 @@ section.bg-image.findings div.background-image {
 }
 
 /* Top givers */
+
+.person-placeholder {
+    position: absolute;
+    top: 10px;
+    left: 40px;
+    z-index: 0;
+    font-size: 100px;
+    color: #fff;
+    opacity: .2;
+}
+
+.person-box:hover .person-placeholder {
+    opacity: .1;
+}
 
 .giver-image {
     position: absolute;
