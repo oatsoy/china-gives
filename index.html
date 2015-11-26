@@ -129,7 +129,7 @@ language: en
 
         {% for person in site.data.persons%}
 
-            {% if b <= 12 %}
+            {% if b <= 10 %}
 
                 {% assign focuses = "a|b" | split: "|" %}
                 {% if person.['Education'] > 0 %}
@@ -159,10 +159,13 @@ language: en
                 {% assign industry_class = industry_class | join: '-' %}
                 {% assign industry_class = industry_class | downcase %}
                 {% assign industry_class = industry_class | replace: '/', '-' %}
-                    <div class="col-sm-3 col-xs-6 mg-top-25 person-box wow pulse" id="person-container-{{ person.['Ranking'] }}">
+                    <div class="{% if b == 1 or b == 6 %}col-md-offset-1{% endif %} col-md-2 col-sm-6 col-xs-6 mg-top-25 person-box top-giver wow pulse" id="person-container-{{ person.['Ranking'] }}">
                         <div class="circle">
-                            <div class="circle-text">
-                                <div>
+                            <div class="circle-text {% if person.['Image URL'] != 0 %}with-bg-image{% endif %}">
+                                {% if person.['Image URL'] != 0 %}
+                                <div class="giver-image" style="background-image: url({{ person.['Image URL'] }});"></div>
+                                {% endif %}
+                                <div class="content">
                                     <div>{{ b }}</div>
                                     <h4 class="card-name-container" data-name="{{ person.['Name Eng'] }}">{{ person.['Name Eng'] }}</h4>
                                     <div>¥{{ person.['Total Amount (million Yuan)'] }} Million</div>
@@ -320,7 +323,7 @@ language: en
                     <div class="content">
                         <div class="row">
                             <div class="col-lg-10 col-lg-offset-1">
-                                <h2 class="section-heading wow bounce"><i class="fa fa-balance-scale"></i> Founding Foundation</h2>
+                                <h2 class="section-heading wow bounce"><i class="fa fa-balance-scale"></i> Founding Foundations</h2>
                                 <hr class="light">
                                 <p class="wow zoomIn">Among Top 100, 19 philanthropists set up own foundations.</p>
                             </div>
