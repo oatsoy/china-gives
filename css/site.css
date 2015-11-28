@@ -432,7 +432,6 @@ section.bg-image.findings div.background-image {
 
 .person-box.top-giver .circle-text .content > * {
     color: rgba(255,255,255,0);
-    text-shadow: 0px 0px 25px rgb(0, 0, 0);
     -webkit-transition: all .5s ease;
     -moz-transition: all .5s ease;
     -o-transition: all .5s ease;
@@ -441,6 +440,7 @@ section.bg-image.findings div.background-image {
 
 .person-box.top-giver .circle-text .content h4 {
     color: rgba(255,255,255,1);
+    text-shadow: 0px 0px 25px rgb(0, 0, 0);
     position: relative;
     top: 40px;
     -webkit-transition: all .5s ease;
@@ -459,6 +459,7 @@ section.bg-image.findings div.background-image {
 
 .person-box.top-giver:hover .circle-text .content > * {
     color: rgba(255,255,255,1);
+    text-shadow: 0px 0px 25px rgb(0, 0, 0);
     -webkit-transition: all .5s ease;
     -moz-transition: all .5s ease;
     -o-transition: all .5s ease;
@@ -545,27 +546,6 @@ section.bg-image.findings div.background-image {
         animation-name: spinRight;
     }
 
-/*    @-ms-keyframes spinRight {
-        from { -ms-transform: rotate(0deg); }
-        to { -ms-transform: rotate(360deg); }
-    }
-    @-moz-keyframes spinRight {
-        from { -moz-transform: rotate(0deg); }
-        to { -moz-transform: rotate(360deg); }
-    }
-    @-webkit-keyframes spinRight {
-        from { -webkit-transform: rotate(0deg); }
-        to { -webkit-transform: rotate(360deg); }
-    }
-    @keyframes spinRight {
-        from {
-            transform:rotate(0deg);
-        }
-        to {
-            transform:rotate(360deg);
-        }
-    }*/
-
     .person-box.top-giver:nth-child(-5n+9) .circle:hover .circle-text,
     .person-box.top-giver:nth-child(-5n+10) .circle:hover .circle-text {
         right: 200px;
@@ -574,27 +554,6 @@ section.bg-image.findings div.background-image {
         -ms-animation-name: spinLeft;
         animation-name: spinLeft;
     }
-
-/*    @-ms-keyframes spinLeft {
-        from { -ms-transform: rotate(0deg); }
-        to { -ms-transform: rotate(-360deg); }
-    }
-    @-moz-keyframes spinLeft {
-        from { -moz-transform: rotate(0deg); }
-        to { -moz-transform: rotate(-360deg); }
-    }
-    @-webkit-keyframes spinLeft {
-        from { -webkit-transform: rotate(0deg); }
-        to { -webkit-transform: rotate(-360deg); }
-    }
-    @keyframes spinLeft {
-        from {
-            transform:rotate(0deg);
-        }
-        to {
-            transform:rotate(-360deg);
-        }
-    }*/
 
 }
 
