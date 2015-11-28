@@ -16,26 +16,26 @@
             <ul class="nav navbar-nav navbar-right">
                 {% if page.language == 'en' %}
                 <li>
-                    <a href="{{ site.baseurl | append: "/"}}">Home <i class="fa fa-home"></i></a>
+                    <a href="{{ site.baseurl | append: "/"}}"><i class="fa fa-home"></i> Home</a>
                 </li>
                 <li class="{% if page.type == 'charts' %}active{% endif %}">
-                    <a href="charts.html">Charts <i class="fa fa-bar-chart"></i></a>
+                    <a href="charts.html"><i class="fa fa-bar-chart"></i> Charts</a>
                 </li>
                 <li class="{% if page.type == 'maps' %}active{% endif %}">
-                    <a href="maps.html" class="">Maps <i class="fa fa-globe"></i></a>
+                    <a href="maps.html" class=""><i class="fa fa-globe"></i> Maps</a>
                 </li>
                 <li>
                     <a href="{{ page.url | prepend:'cn' }}"><span class="menu-btn">中文版</span></a>
                 </li>
                 {% elsif page.language == 'cn' %}
                 <li>
-                    <a href="{{ site.baseurl | append: "/cn/"}}">主页 <i class="fa fa-home"></i></a>
+                    <a href="{{ site.baseurl | append: "/cn/"}}"><i class="fa fa-home"></i> 主页</a>
                 </li>                
                 <li class="{% if page.type == 'charts' %}active{% endif %}">
-                    <a href="charts.html">排行榜 <i class="fa fa-bar-chart"></i></a>
+                    <a href="charts.html"><i class="fa fa-bar-chart"></i> 排行榜</a>
                 </li>
                 <li class="{% if page.type == 'maps' %}active{% endif %}">
-                    <a href="maps.html" class="">地图 <i class="fa fa-globe"></i></a>
+                    <a href="maps.html" class=""><i class="fa fa-globe"></i> 地图</a>
                 </li>
                 <li>
                     <a href="../{{ page.url | remove:'/cn/' }}"><span class="menu-btn">En</span></a>

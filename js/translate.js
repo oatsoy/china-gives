@@ -72,6 +72,10 @@ function word_list(){
 			cn: '制造业'
 		},
 		{
+			en: 'Philanthropic Causes',
+			cn: '关注领域'
+		},
+		{
 			en: 'Real Estate',
 			cn: '房地产'
 		},
@@ -116,7 +120,7 @@ function word_list(){
 			cn: '捐赠总额'
 		},
 		{
-			en: 'Generosity %',
+			en: 'Generosity',
 			cn: '慷慨指数'
 		},
 		{
