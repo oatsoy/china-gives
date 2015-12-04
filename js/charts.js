@@ -456,6 +456,9 @@ var init_charts = function (data){
                 }
             },
             bubble: {
+                dataLabels: {
+                    color: '#FFF'
+                },
                 events: {
                     click: function (e){
                         var person_number = e.point.person_number;
