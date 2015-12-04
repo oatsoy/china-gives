@@ -87,7 +87,7 @@ function auto_hide_fixed_charts() {
     if ( $(document).scrollTop() >= footer_position - 500) {
       $('#charts-container').addClass('closed');
     }
-    else if ($(document).scrollTop() < footer_position - 500 && is_click_inited) {
+    else if ($(document).scrollTop() < footer_position - 500) {
       $('#charts-container').removeClass('closed');
       $('#charts-container').addClass('reopened');
     }
