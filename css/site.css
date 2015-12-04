@@ -705,10 +705,10 @@ section.charts .container-fluid.charts-container {
 
 .chart-wrapper {
     height: calc(100vh - 142px);
-    -webkit-transition: all 1s ease-out;
-    -moz-transition: all 1s ease-out;
-    -o-transition: all 1s ease-out;
-    transition: all 1s ease-out;
+    -webkit-transition: all .5s ease-out;
+    -moz-transition: all .5s ease-out;
+    -o-transition: all .5s ease-out;
+    transition: all .5s ease-out;
     background-color: transparent;
     overflow: hidden;
 }
