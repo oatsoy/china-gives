@@ -47,10 +47,11 @@ ul.no-bullets li {
     list-style-type: none;
 }
 
-.chart-loader {
+.charts .chart-loader {
     width: 50px;
     margin: 0 auto;
     text-align: center;
+    margin-top: 35vh;
 }
 
 /* color overrides */
@@ -664,7 +665,7 @@ section.bg-image.findings div.background-image {
 /* Charts */
 
 section.charts {
-    padding-bottom: 0;
+    padding: 60px 0 0 0;
 }
 
 @media(min-width:768px) {
@@ -703,7 +704,7 @@ section.charts .container-fluid.charts-container {
 }
 
 .chart-wrapper {
-    height: calc(100vh - 182px);
+    height: calc(100vh - 142px);
     -webkit-transition: all 1s ease-out;
     -moz-transition: all 1s ease-out;
     -o-transition: all 1s ease-out;
@@ -718,7 +719,7 @@ section.charts .container-fluid.charts-container {
 
 #series_chart_div {
     width: 100%; 
-    height: calc(100vh - 182px);
+    height: calc(100vh - 142px);
     overflow: hidden;
         background-color: transparent;
 }

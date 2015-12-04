@@ -1,6 +1,13 @@
 var chart_data_res;
 
-var chart_opts;
+var chart_opts = {
+        xAxis: {
+            gridLineWidth: 12,
+        },
+        yAxis: {
+            gridLineWidth: 11,
+        }
+    }
 
 var current_chart_data = [];
 
@@ -413,7 +420,8 @@ var init_charts = function (data){
             plotBorderWidth: 1,
             animation: {
                 duration: 1000
-            }
+            },
+            backgroundColor: 'transparent'
         },
         legend: {
             enabled: true
