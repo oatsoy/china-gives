@@ -6,6 +6,18 @@ var current_chart_data = [];
 
 var wrapper_max_height;
 
+function without_hash(str){
+   return str.indexOf("#") > -1 ? str.split('#')[0] : str;
+}
+
+function get_param(){
+   return window.location.href.indexOf("?") > -1 ? without_hash(window.location.href.split('?')[1]) : '';
+}
+
+function get_base_url(){
+  return window.location.href.indexOf("?") > -1 ? window.location.href.split('?')[0] : window.location.href;
+}
+
 var get_initals = function(name){
   if (is_chinese()){
     if (!chart_data_res)
@@ -98,7 +110,8 @@ var get_generosity_data = function (){
             },
             tickInterval: null,
             tickWidth: 0,
-            tickLength: 5
+            lineWidth: 1,
+            lineColor: '#606060'
         },
 		yAxis: {
             gridLineWidth: 0,
@@ -110,7 +123,9 @@ var get_generosity_data = function (){
             labels: {
                 format: '{value}%'
             },
-            maxPadding: 0.2
+            maxPadding: 0.2,
+            lineWidth: 1,
+            lineColor: '#606060'
         },
 
 	}
@@ -143,7 +158,6 @@ var get_focus_data = function (){
 
 	chart_opts = {
 		xAxis: {
-            gridLineWidth: 1,
             title: {
                 text: trsl('Total Amount')
             },
@@ -162,7 +176,8 @@ var get_focus_data = function (){
             labels: {
                 format: '{value}%'
             },
-            maxPadding: 0.2
+            maxPadding: 0.2,
+            lineWidth: 1
         },
 
 	}
@@ -201,7 +216,7 @@ var get_industry_data = function (){
 
     chart_opts = {
         xAxis: {
-            gridLineWidth: 1,
+            
             title: {
                 text: trsl('Industry')
             },
@@ -220,7 +235,8 @@ var get_industry_data = function (){
             labels: {
                 format: '¥{value} m',
             },
-            maxPadding: 0.2
+            maxPadding: 0.2,
+            lineWidth: 1
         },
 
     }
@@ -259,7 +275,7 @@ var get_age_data = function(){
 
     chart_opts = {
         xAxis: {
-            gridLineWidth: 1,
+            
             title: {
                 text: trsl('Age')
             },
@@ -278,7 +294,8 @@ var get_age_data = function(){
             labels: {
                 format: '¥{value} m',
             },
-            maxPadding: 0.2
+            maxPadding: 0.2,
+            lineWidth: 1
         }
     }
 
@@ -315,7 +332,7 @@ var get_focus_type_data = function (type){
 
     chart_opts = {
         xAxis: {
-            gridLineWidth: 1,
+            
             title: {
                 text: trsl('Total Donations')
             },
@@ -334,7 +351,8 @@ var get_focus_type_data = function (type){
             labels: {
                 format: '¥{value} m',
             },
-            maxPadding: 0.2
+            maxPadding: 0.2,
+            lineWidth: 1
         }
     }
     return res;
@@ -372,7 +390,7 @@ var get_months_data = function(){
 
     chart_opts = {
         xAxis: {
-            gridLineWidth: 1,
+            
             title: {
                 text: ''
             },
@@ -391,7 +409,8 @@ var get_months_data = function(){
             labels: {
                 format: ' ',
             },
-            maxPadding: 0.2
+            maxPadding: 0.2,
+            lineWidth: 0
         }
     }
     return res;
@@ -401,7 +420,7 @@ var init_charts = function (data){
 	$('#series_chart_div').highcharts({
         chart: {
             type: 'bubble',
-            plotBorderWidth: 1,
+            plotBorderWidth: 0,
             animation: {
                 duration: 1000
             },
