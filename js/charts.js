@@ -1,13 +1,6 @@
 var chart_data_res;
 
-var chart_opts = {
-        xAxis: {
-            gridLineWidth: 12,
-        },
-        yAxis: {
-            gridLineWidth: 11,
-        }
-    }
+var chart_opts;
 
 var current_chart_data = [];
 
@@ -107,7 +100,7 @@ var get_generosity_data = function (){
 
 	chart_opts = {
 		xAxis: {
-            gridLineWidth: 1,
+            gridLineWidth: 0,
             title: {
                 text: trsl('Total Amount')
             },
@@ -115,9 +108,12 @@ var get_generosity_data = function (){
                 format: '¥{value} m',
                 formatter: null
             },
-            tickInterval: null
+            tickInterval: null,
+            tickWidth: 0,
+            tickLength: 5
         },
 		yAxis: {
+            gridLineWidth: 0,
             startOnTick: false,
             endOnTick: false,
             title: {
