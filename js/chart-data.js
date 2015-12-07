@@ -22,15 +22,17 @@ function chart_data(){
                 "Healthcare": {{ person.['Healthcare'] }},
                 "Social Welfare": {{ person.['Social Welfare'] }},
                 "Disaster Relief": {{ person.['Disaster Relief'] }},
-                "Culture": {{ person.['Culture'] }}
+                "Culture": {{ person.['Culture'] }},
+                id: uuid.v4()
               },
             {% endfor %}
         ];
-        return chart_data.sort(function(a, b){
+    chart_data = chart_data.sort(function(a, b){
             if (b['Industry'] == 'Other')
                 return -1;
             return 1;
         });
+    return chart_data;
 }
 
 function chart_month_data(){
