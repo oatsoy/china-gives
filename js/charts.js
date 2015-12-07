@@ -286,6 +286,7 @@ function diff_chart_data(new_data){
     }); 
 
     /// UPDATE AXISES
+    
 
     chart.redraw();
 }
