@@ -42,7 +42,8 @@ function chart_month_data(){
         {% for month in site.data.months%}    
           {
             "Month": "{{ month.['Month'] }}",
-            "Amount": {{ month.['Amount'] }}
+            "Amount": {{ month.['Amount'] }},
+            id: uuid.v4()
           },
         {% endfor %}      
     ];

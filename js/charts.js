@@ -36,7 +36,8 @@ var get_focus = function (item){
 
 var get_industry_color = function (industry){
 	var def_colors = [['Manufacturing', '#368DB9'], ['Real Estate', '#A51C30'], ['Energy', '#FAAE53'], ['Consumer', '#52854C'], ['Tech/IT','#293352'], 
-                      ['Finance', '#48c4b7'], ['Education', '#861657'], ['Healthcare', '#CED665'], ['Transportation', '#8C8179'], ['Other', '#80475E']];
+                      ['Finance', '#48c4b7'], ['Education', '#861657'], ['Healthcare', '#CED665'], ['Transportation', '#8C8179'], ['Other', '#80475E'],
+                      ['Month Series', '#293352']];
     var res = $.grep(def_colors, function(n){
 			   	  return n[0] == industry;
 			  });    	        
@@ -221,8 +222,6 @@ var get_age_data = function(){
         chart_data_res = chart_data();
     var res = [];
 
-    var count_to_delete = 0;
-
     var filtered_data = $.grep(chart_data_res, function(n){
                             return parseInt(n['Age']) > 0;
                         });
@@ -279,8 +278,6 @@ var get_focus_type_data = function (type){
         chart_data_res = chart_data();
     var res = [];
 
-    var count_to_delete = 0;
-
     var filtered_data = $.grep(chart_data_res, function(n){
                             return n[type];
                         });
@@ -331,6 +328,63 @@ var get_focus_type_data = function (type){
     return res;
 }
 
+var get_months_data = function(){
+
+    var res = [];
+
+    var month_data = $.map(chart_month_data(), function(n,i){
+       return { x: i + 1, y: 1, z: n['Amount'], name: trsl_int('¥' + n['Amount'] + ' m'),
+                full_name: trsl_int('¥' + n['Amount'] + ' m'), id: n.id };
+    });
+
+    var get_month_label = function (){
+        var that = this;
+        var month_label_array = [{v: 0, f: ''}, {v: 1, f: trsl('Sep 14')}, {v: 2, f: trsl('Oct 14')},
+                  {v: 3, f: trsl('Nov 14')},{v: 4, f: trsl('Dec 14')},{v: 5, f: trsl('Jan 15')},{v: 6, f: trsl('Feb 15')},
+                  {v: 7, f: trsl('Mar 15')},{v: 8, f: trsl('Apr 15')},{v: 9, f: trsl('May 15')},{v: 10, f: trsl('Jun 15')},
+                  {v: 11, f: trsl('Jul 15')},{v: 12, f: trsl('Aug 15')},{v: 13, f: ''}];
+        var current_month = $.grep(month_label_array, function(n){
+                                   return n.v == that.value;
+                                   });   
+        if (current_month.length > 0)
+            return current_month[0].f;
+        return '';
+    };
+
+    res.push({
+        name: 'Month Series',
+        color: get_industry_color('Month Series'),
+        data: month_data,
+        showInLegend: false
+    });    
+
+    chart_opts = {
+        xAxis: {
+            gridLineWidth: 1,
+            title: {
+                text: ''
+            },
+            labels: {
+                format: null,
+                formatter: get_month_label
+            },
+            tickInterval: null
+        },
+        yAxis: {
+            startOnTick: false,
+            endOnTick: false,
+            title: {
+                text: ''
+            },
+            labels: {
+                format: ' ',
+            },
+            maxPadding: 0.2
+        }
+    }
+    return res;
+}
+
 var init_charts = function (data){
 	$('#series_chart_div').highcharts({
         chart: {
@@ -340,7 +394,6 @@ var init_charts = function (data){
                 duration: 2000
             }
         },
-
         legend: {
             enabled: true
         },
@@ -350,11 +403,12 @@ var init_charts = function (data){
         title: {
             text: ''
         },
-
         subtitle: {
             text: ''
         },
-
+        credits: {
+          enabled: false
+        },
         tooltip: {
             useHTML: true,
             headerFormat: '<table>',
@@ -362,7 +416,6 @@ var init_charts = function (data){
             footerFormat: '</table>',
             followPointer: true
         },
-
         plotOptions: {
             series: {
                 dataLabels: {
@@ -413,7 +466,8 @@ function add_chart_point(data_list, chart, data){
         chart.addSeries({
             name: trsl(data_list.name),
             color: get_industry_color(data_list.name),
-            data: [data]
+            data: [data],
+            showInLegend: data_list.showInLegend
         }, false);
     }
 }
@@ -472,7 +526,7 @@ $(function (){
     diff_chart_data(init_data);
     current_chart_data = init_data;
 
-    $('[data-chart-type]').click(function (e){
+    $('[data-chart-type][data-chart-action]').click(function (e){
         e.preventDefault();
         var new_data = eval($(this).data('chart-action'));
         diff_chart_data(new_data);
