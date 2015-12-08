@@ -83,8 +83,10 @@ var get_generosity_data = function (){
                 text: trsl('Total Amount')
             },
             labels: {
-                format: '¥{value} m'
-            }
+                format: '¥{value} m',
+                formatter: null
+            },
+            tickInterval: null
         },
 		yAxis: {
             startOnTick: false,
@@ -133,8 +135,10 @@ var get_focus_data = function (){
                 text: trsl('Total Amount')
             },
             labels: {
-                format: '¥{value} m'
-            }
+                format: '¥{value} m',
+                formatter: null
+            },
+            tickInterval: null
         },
 		yAxis: {
             startOnTick: false,
@@ -153,13 +157,136 @@ var get_focus_data = function (){
 	return res;
 };
 
+var get_industry_data = function (){
+    if (!chart_data_res)
+        chart_data_res = chart_data();
+    var res = [];
+    var industries = $.map(chart_data_res, function(n,i){
+       return n['Industry'];
+    });
+    industries = jQuery.unique(industries);
+
+
+    var get_industry_label = function (){
+        return trsl(industries[this.value]);
+    };
+
+    $.each(industries, function (index, industry){
+        var fetched_industrial = $.grep(chart_data_res, function(n){
+                                   return n['Industry'] == industry;
+                                 });
+        fetched_industrial = $.map(fetched_industrial, function(n,i){
+                               return { x: index, y:  n['Total Amount (million Yuan)'], z: n['Total Amount (million Yuan)'], name: get_initals(n["Name Eng"]),
+                                        full_name: is_chinese() ? n["Name CN"] : n["Name Eng"], id: n.id };
+                             });
+        res.push({
+            name: trsl(industry),
+            color: get_industry_color(industry),
+            data: fetched_industrial
+        });
+    });
+
+    chart_opts = {
+        xAxis: {
+            gridLineWidth: 1,
+            title: {
+                text: trsl('Industry')
+            },
+            labels: {
+                format: null,
+                formatter: get_industry_label
+            },
+            tickInterval: 1
+        },
+        yAxis: {
+            startOnTick: false,
+            endOnTick: false,
+            title: {
+                text: trsl('Total Amount')
+            },
+            labels: {
+                format: '¥{value} m',
+            },
+            maxPadding: 0.2
+        },
+
+    }
+
+    return res;
+};
+
+var get_age_data = function(){
+
+    if (!chart_data_res)
+        chart_data_res = chart_data();
+    var res = [];
+
+    var count_to_delete = 0;
+
+    var filtered_data = $.grep(chart_data_res, function(n){
+                            if ( parseInt(n['Age']) > 0){
+                                count_to_delete = count_to_delete + 1;
+                            }
+                            return parseInt(n['Age']) > 0;
+                        });
+
+    var industries = $.map(filtered_data, function(n,i){
+       return n['Industry'];
+    });
+    industries = jQuery.unique(industries);
+    $.each(industries, function (index, industry){
+        var fetched_industrial = $.grep(filtered_data, function(n){
+                                   return n['Industry'] == industry;
+                                 });
+        fetched_industrial = $.map(fetched_industrial, function(n,i){
+                               return { x: parseInt(n['Age']), y: n['Total Amount (million Yuan)'], z: n['Total Amount (million Yuan)'], name: get_initals(n["Name Eng"]),
+                                        full_name: is_chinese() ? n["Name CN"] : n["Name Eng"], id: n.id };
+                             });
+        res.push({
+            name: trsl(industry),
+            color: get_industry_color(industry),
+            data: fetched_industrial
+        });
+    });
+
+    chart_opts = {
+        xAxis: {
+            gridLineWidth: 1,
+            title: {
+                text: trsl('Age')
+            },
+            labels: {
+                format: '{value}',
+                formatter: null
+            },
+            tickInterval: null
+        },
+        yAxis: {
+            startOnTick: false,
+            endOnTick: false,
+            title: {
+                text: trsl('Total Amount')
+            },
+            labels: {
+                format: '¥{value} m',
+            },
+            maxPadding: 0.2
+        }
+    }
+
+    return res;
+}
+
 var init_charts = function (){
     var data = get_generosity_data();
 	$('#series_chart_div').highcharts({
 
         chart: {
             type: 'bubble',
-            plotBorderWidth: 1
+            plotBorderWidth: 1,
+            animation: {
+                duration: 2000
+            }
         },
 
         legend: {
@@ -204,10 +331,12 @@ var init_charts = function (){
     current_chart_data = data;
 };
 
-function match_by_id(new_data_item, old_data){
+function match_by_id(new_data_item, old_data){    
     var res = null;
     var ind = null;
     var series_index = null;
+    if (!new_data_item || !old_data)
+        return {res: res, ind: ind, series_index: series_index};
     $.each(old_data, function (index, old_data_list){
         $.each(old_data_list.data, function (i, data){
             if (data.id == new_data_item.id){
@@ -247,16 +376,7 @@ function diff_chart_data(new_data){
 	var chart = $('#series_chart_div').highcharts();
 	if (!current_chart_data)
 		current_chart_data = new_data;
-	var existing;
-
-    $.each(current_chart_data, function (index, current_data_list){
-        $.each(current_data_list.data, function (i, data){
-            var matched = match_by_id(data, new_data);
-            if (!matched.res){
-                remove_chart_point(data, chart);
-            }
-        });
-    }); 
+    
 
 	$.each(new_data, function (index, new_data_list){
 		$.each(new_data_list.data, function (i, data){
@@ -268,6 +388,17 @@ function diff_chart_data(new_data){
             }
 		});
 	});	
+
+
+    $.each(current_chart_data, function (index, current_data_list){
+        $.each(current_data_list.data, function (i, data){
+            var matched = match_by_id(data, new_data);
+            if (!matched.res){
+                remove_chart_point(data, chart);
+            }
+        });
+    }); 
+
     chart.redraw();
 
     var series_to_remove = [];
@@ -283,10 +414,10 @@ function diff_chart_data(new_data){
         if (serie.length > 0){
             serie[0].remove();
         }
-    }); 
+    });
 
-    /// UPDATE AXISES
-    
+    chart.xAxis[0].update(chart_opts.xAxis, false);
+    chart.yAxis[0].update(chart_opts.yAxis, false);
 
     chart.redraw();
 }
@@ -302,6 +433,18 @@ $(function (){
 	});
     $('[data-chart-type="generosity"]').click(function (e){
         var new_data = get_generosity_data();
+        diff_chart_data(new_data);
+        current_chart_data = new_data;
+        e.preventDefault();
+    });
+    $('[data-chart-type="industry"]').click(function (e){
+        var new_data = get_industry_data();
+        diff_chart_data(new_data);
+        current_chart_data = new_data;
+        e.preventDefault();
+    });
+    $('[data-chart-type="age"]').click(function (e){
+        var new_data = get_age_data();
         diff_chart_data(new_data);
         current_chart_data = new_data;
         e.preventDefault();
