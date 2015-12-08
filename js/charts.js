@@ -2,7 +2,7 @@ var chart_data_res;
 
 var chart_opts;
 
-var current_chart_data;
+var current_chart_data = [];
 
 var get_initals = function(name){
   if (is_chinese()){
@@ -224,9 +224,6 @@ var get_age_data = function(){
     var count_to_delete = 0;
 
     var filtered_data = $.grep(chart_data_res, function(n){
-                            if ( parseInt(n['Age']) > 0){
-                                count_to_delete = count_to_delete + 1;
-                            }
                             return parseInt(n['Age']) > 0;
                         });
 
@@ -277,10 +274,65 @@ var get_age_data = function(){
     return res;
 }
 
-var init_charts = function (){
-    var data = get_generosity_data();
-	$('#series_chart_div').highcharts({
+var get_focus_type_data = function (type){
+    if (!chart_data_res)
+        chart_data_res = chart_data();
+    var res = [];
 
+    var count_to_delete = 0;
+
+    var filtered_data = $.grep(chart_data_res, function(n){
+                            return n[type];
+                        });
+
+    var industries = $.map(filtered_data, function(n,i){
+       return n['Industry'];
+    });
+    industries = jQuery.unique(industries);
+    $.each(industries, function (index, industry){
+        var fetched_industrial = $.grep(filtered_data, function(n){
+                                   return n['Industry'] == industry;
+                                 });
+        fetched_industrial = $.map(fetched_industrial, function(n,i){
+                               return { x: n['Total Amount (million Yuan)'], y: n[type], z: n['Total Amount (million Yuan)'], name: get_initals(n["Name Eng"]),
+                                        full_name: is_chinese() ? n["Name CN"] : n["Name Eng"], id: n.id };
+                             });
+        res.push({
+            name: trsl(industry),
+            color: get_industry_color(industry),
+            data: fetched_industrial
+        });
+    });
+
+    chart_opts = {
+        xAxis: {
+            gridLineWidth: 1,
+            title: {
+                text: trsl('Total Donations')
+            },
+            labels: {
+                format: '¥{value} m',
+                formatter: null
+            },
+            tickInterval: null
+        },
+        yAxis: {
+            startOnTick: false,
+            endOnTick: false,
+            title: {
+                text: trsl('Donations in ' + type)
+            },
+            labels: {
+                format: '¥{value} m',
+            },
+            maxPadding: 0.2
+        }
+    }
+    return res;
+}
+
+var init_charts = function (data){
+	$('#series_chart_div').highcharts({
         chart: {
             type: 'bubble',
             plotBorderWidth: 1,
@@ -319,16 +371,10 @@ var init_charts = function (){
                 }
             }
         },
-
         series: data,
-
-
         xAxis: chart_opts.xAxis,
-
         yAxis: chart_opts.yAxis
-
     });
-    current_chart_data = data;
 };
 
 function match_by_id(new_data_item, old_data){    
@@ -374,9 +420,6 @@ function add_chart_point(data_list, chart, data){
 
 function diff_chart_data(new_data){
 	var chart = $('#series_chart_div').highcharts();
-	if (!current_chart_data)
-		current_chart_data = new_data;
-    
 
 	$.each(new_data, function (index, new_data_list){
 		$.each(new_data_list.data, function (i, data){
@@ -423,31 +466,17 @@ function diff_chart_data(new_data){
 }
 
 $(function (){
-	init_charts();
 
-	$('[data-chart-type="focus"]').click(function (e){
-        var new_data = get_focus_data();
-		diff_chart_data(new_data);
-        current_chart_data = new_data;
-		e.preventDefault();
-	});
-    $('[data-chart-type="generosity"]').click(function (e){
-        var new_data = get_generosity_data();
+    var init_data = get_generosity_data();
+    init_charts([]);
+    diff_chart_data(init_data);
+    current_chart_data = init_data;
+
+    $('[data-chart-type]').click(function (e){
+        e.preventDefault();
+        var new_data = eval($(this).data('chart-action'));
         diff_chart_data(new_data);
         current_chart_data = new_data;
-        e.preventDefault();
     });
-    $('[data-chart-type="industry"]').click(function (e){
-        var new_data = get_industry_data();
-        diff_chart_data(new_data);
-        current_chart_data = new_data;
-        e.preventDefault();
-    });
-    $('[data-chart-type="age"]').click(function (e){
-        var new_data = get_age_data();
-        diff_chart_data(new_data);
-        current_chart_data = new_data;
-        e.preventDefault();
-    });
-	
+
 });
