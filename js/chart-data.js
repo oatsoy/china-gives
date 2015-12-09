@@ -23,7 +23,8 @@ function chart_data(){
                 "Social Welfare": {{ person.['Social Welfare'] }},
                 "Disaster Relief": {{ person.['Disaster Relief'] }},
                 "Culture": {{ person.['Culture'] }},
-                id: uuid.v4()
+                id: uuid.v4(),
+                person_number: {{ forloop.index }}
               },
             {% endfor %}
         ];

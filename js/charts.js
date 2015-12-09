@@ -87,7 +87,7 @@ var get_generosity_data = function (){
 								 });
 		fetched_industrial = $.map(fetched_industrial, function(n,i){
 							   return { x: n['Total Amount (million Yuan)'], y: parseFloat(n['Generosity']), z: n['Total Amount (million Yuan)'], name: get_initals(n["Name Eng"]),
-							   			full_name: is_chinese() ? n["Name CN"] : n["Name Eng"], id: n.id };
+							   			full_name: is_chinese() ? n["Name CN"] : n["Name Eng"], id: n.id, person_number: n.person_number };
 							 });
 		res.push({
 			name: trsl(industry),
@@ -139,7 +139,7 @@ var get_focus_data = function (){
 								 });
 		fetched_industrial = $.map(fetched_industrial, function(n,i){
 							   return { x: n['Total Amount (million Yuan)'], y:  get_focus(n), z: n['Total Amount (million Yuan)'], name: get_initals(n["Name Eng"]),
-							   			full_name: is_chinese() ? n["Name CN"] : n["Name Eng"], id: n.id };
+							   			full_name: is_chinese() ? n["Name CN"] : n["Name Eng"], id: n.id, person_number: n.person_number };
 							 });
 		res.push({
 			name: trsl(industry),
@@ -197,7 +197,7 @@ var get_industry_data = function (){
                                  });
         fetched_industrial = $.map(fetched_industrial, function(n,i){
                                return { x: index, y:  n['Total Amount (million Yuan)'], z: n['Total Amount (million Yuan)'], name: get_initals(n["Name Eng"]),
-                                        full_name: is_chinese() ? n["Name CN"] : n["Name Eng"], id: n.id };
+                                        full_name: is_chinese() ? n["Name CN"] : n["Name Eng"], id: n.id, person_number: n.person_number };
                              });
         res.push({
             name: trsl(industry),
@@ -255,7 +255,7 @@ var get_age_data = function(){
                                  });
         fetched_industrial = $.map(fetched_industrial, function(n,i){
                                return { x: parseInt(n['Age']), y: n['Total Amount (million Yuan)'], z: n['Total Amount (million Yuan)'], name: get_initals(n["Name Eng"]),
-                                        full_name: is_chinese() ? n["Name CN"] : n["Name Eng"], id: n.id };
+                                        full_name: is_chinese() ? n["Name CN"] : n["Name Eng"], id: n.id, person_number: n.person_number };
                              });
         res.push({
             name: trsl(industry),
@@ -311,7 +311,7 @@ var get_focus_type_data = function (type){
                                  });
         fetched_industrial = $.map(fetched_industrial, function(n,i){
                                return { x: n['Total Amount (million Yuan)'], y: n[type], z: n['Total Amount (million Yuan)'], name: get_initals(n["Name Eng"]),
-                                        full_name: is_chinese() ? n["Name CN"] : n["Name Eng"], id: n.id };
+                                        full_name: is_chinese() ? n["Name CN"] : n["Name Eng"], id: n.id, person_number: n.person_number };
                              });
         res.push({
             name: trsl(industry),
@@ -440,6 +440,30 @@ var init_charts = function (data){
                 dataLabels: {
                     enabled: true,
                     format: '{point.name}'
+                }
+            },
+            bubble: {
+                events: {
+                    click: function (e){
+                        var person_number = e.point.person_number;
+                        if (person_number){
+                            var elem = $('#person-container-' + person_number);
+                            if (elem.length > 0){
+                                  if (($('#page-top').hasClass('fix-charts') || will_fix(window)) && !is_chart_closed) {
+                                      $('html, body').animate({
+                                          scrollTop: elem.offset().top - 466
+                                        }, 2000);
+                                  }
+                                  else {
+                                    $('html, body').animate({
+                                      scrollTop: elem.offset().top - 70
+                                    }, 2000);
+                                  }
+                                  $('.person-box').removeClass('selected');      
+                                  elem.addClass('selected');
+                            }
+                        }
+                    }
                 }
             }
         },

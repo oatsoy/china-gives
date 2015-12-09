@@ -148,7 +148,7 @@ type: charts
                     {% if person.['Disaster Relief'] != 0 %} data-disaster="{{ disaster_number }}" {% endif %} 
                     {% if person.['Culture'] != 0 %} data-culture="{{ culture_number }}" {% endif %} 
 
-                    id="person-container-{{ person.['Ranking'] }}">
+                    id="person-container-{{ forloop.index }}">
                     <div class="circle">
                         <div class="circle-text">
                             <div class="content">
