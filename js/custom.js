@@ -10,6 +10,18 @@ var currentMousePos = { x: -1, y: -1 };
 var c_c_h;
 var c_c_w;
 
+function without_hash(str){
+   return str.indexOf("#") > -1 ? str.split('#')[0] : str;
+}
+
+function get_param(){
+   return window.location.href.indexOf("?") > -1 ? without_hash(window.location.href.split('?')[1]) : '';
+}
+
+function get_base_url(){
+  return window.location.href.indexOf("?") > -1 ? window.location.href.split('?')[0] : window.location.href;
+}
+
 function get_chart_container_sizes(){
   c_c_h = $('#series_chart_div').height();
   c_c_w = $(window).width();

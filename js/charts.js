@@ -6,18 +6,6 @@ var current_chart_data = [];
 
 var wrapper_max_height;
 
-function without_hash(str){
-   return str.indexOf("#") > -1 ? str.split('#')[0] : str;
-}
-
-function get_param(){
-   return window.location.href.indexOf("?") > -1 ? without_hash(window.location.href.split('?')[1]) : '';
-}
-
-function get_base_url(){
-  return window.location.href.indexOf("?") > -1 ? window.location.href.split('?')[0] : window.location.href;
-}
-
 var get_initals = function(name){
   if (is_chinese()){
     if (!chart_data_res)
