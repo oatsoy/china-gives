@@ -613,7 +613,17 @@ function redraw_chart(without_data_init){
         chart.setSize(width, wrapper_max_height, doAnimation = true);
 }
 
+function check_scroll_to_people(){
+    if (window.location.href.indexOf('#people') > -1){
+        $('html, body').animate({
+            scrollTop: $("#people").offset().top - 400
+        }, 1000);
+    }
+}
+
 $(function (){
+
+    check_scroll_to_people();
 
     wrapper_max_height = $('.chart-wrapper').height();
 
