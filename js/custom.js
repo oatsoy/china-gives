@@ -24,7 +24,7 @@ function arr_last(arr){
 }
 
 function resize_charts() {
-  //make_routing();   
+  redraw_chart();
 }
 
 function map_height() {
@@ -50,14 +50,12 @@ function fix_chart(that){
       $('#chart-tooltip').css('display', 'none');
       get_chart_container_sizes();
       redraw_chart();
-      //make_routing();
     }
   } else {
     if (wrap.hasClass("fix-charts")){
       wrap.removeClass("fix-charts");
       get_chart_container_sizes();
       redraw_chart();
-      //make_routing();
     }
   }
   if (is_chart_closed) {
@@ -116,7 +114,7 @@ $(function (){
 
   auto_hide_fixed_charts();
 
-  resize_charts();
+  // resize_charts();
 
   map_height();
 
