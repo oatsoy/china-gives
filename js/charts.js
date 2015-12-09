@@ -56,7 +56,7 @@ var get_generosity_data = function (){
 		chart_data_res = chart_data();
 	var res = [];
 	var filtered_data = $.grep(chart_data_res, function(n){
-					    	return parseFloat(n['Generosity']);
+					    	return parseFloat(n['Generosity']) > 0;
 					 	});
 	var industries = $.map(filtered_data, function(n,i){
 	   return n['Industry'];
@@ -391,7 +391,7 @@ var init_charts = function (data){
             type: 'bubble',
             plotBorderWidth: 1,
             animation: {
-                duration: 2000
+                duration: 1000
             }
         },
         legend: {
