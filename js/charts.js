@@ -4,6 +4,8 @@ var chart_opts;
 
 var current_chart_data = [];
 
+var wrapper_max_height;
+
 function without_hash(str){
    return str.indexOf("#") > -1 ? str.split('#')[0] : str;
 }
@@ -571,17 +573,29 @@ function draw_chart(link){
     link.addClass('active');
 }
 
+function redraw_chart(){
+    var param = get_param();
+    if (!param)
+        param = 'generosity';
+    draw_chart($('[data-chart-type="' + param + '"][data-chart-action]'));
+    var chart = $('#series_chart_div').highcharts();
+    var width = $('.chart-wrapper').width();
+    if ($("#page-top").hasClass('fix-charts'))
+        chart.setSize(width, 300, doAnimation = true);
+    else
+        chart.setSize(width, wrapper_max_height, doAnimation = true);
+}
+
 $(function (){
+
+    wrapper_max_height = $('.chart-wrapper').height();
 
     var init_data = get_generosity_data();
     init_charts([]);
     diff_chart_data(init_data);
     current_chart_data = init_data;
 
-    var param = get_param();
-    if (!param)
-        param = 'generosity';
-    draw_chart($('[data-chart-type="' + param + '"][data-chart-action]'));
+    redraw_chart();
 
     $('[data-chart-type][data-chart-action]').click(function (e){
         e.preventDefault();
