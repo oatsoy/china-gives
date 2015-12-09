@@ -4,6 +4,18 @@ var chart_opts;
 
 var current_chart_data = [];
 
+function without_hash(str){
+   return str.indexOf("#") > -1 ? str.split('#')[0] : str;
+}
+
+function get_param(){
+   return window.location.href.indexOf("?") > -1 ? without_hash(window.location.href.split('?')[1]) : '';
+}
+
+function get_base_url(){
+  return window.location.href.indexOf("?") > -1 ? window.location.href.split('?')[0] : window.location.href;
+}
+
 var get_initals = function(name){
   if (is_chinese()){
     if (!chart_data_res)
@@ -519,6 +531,16 @@ function diff_chart_data(new_data){
     chart.redraw();
 }
 
+function draw_chart(link){
+    var new_data = eval(link.data('chart-action'));
+    diff_chart_data(new_data);
+    current_chart_data = new_data;
+    history.pushState('', '', get_base_url() + '?' + link.data('chart-type'));
+
+    $('[data-chart-type][data-chart-action]').removeClass('active');
+    link.addClass('active');
+}
+
 $(function (){
 
     var init_data = get_generosity_data();
@@ -526,11 +548,15 @@ $(function (){
     diff_chart_data(init_data);
     current_chart_data = init_data;
 
+    var param = get_param();
+    if (!param)
+        param = 'generosity';
+    draw_chart($('[data-chart-type="' + param + '"][data-chart-action]'));
+
     $('[data-chart-type][data-chart-action]').click(function (e){
         e.preventDefault();
-        var new_data = eval($(this).data('chart-action'));
-        diff_chart_data(new_data);
-        current_chart_data = new_data;
+        var that = $(this);
+        draw_chart(that);
     });
 
 });
