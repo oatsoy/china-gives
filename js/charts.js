@@ -18,6 +18,11 @@ function get_base_url(){
   return window.location.href.indexOf("?") > -1 ? window.location.href.split('?')[0] : window.location.href;
 }
 
+function get_chinese_number(){
+    var val = '¥' + this.value + ' m';
+    return trsl_int(val);
+}
+
 var get_initals = function(name){
   if (is_chinese()){
     if (!chart_data_res)
@@ -105,8 +110,8 @@ var get_generosity_data = function (){
                 text: trsl('Total Amount')
             },
             labels: {
-                format: '¥{value} m',
-                formatter: null
+                format: null,
+                formatter: get_chinese_number
             },
             tickInterval: null,
             tickWidth: 0,
@@ -162,8 +167,8 @@ var get_focus_data = function (){
                 text: trsl('Total Amount')
             },
             labels: {
-                format: '¥{value} m',
-                formatter: null
+                format: null,
+                formatter: get_chinese_number
             },
             tickInterval: null
         },
@@ -233,7 +238,8 @@ var get_industry_data = function (){
                 text: trsl('Total Amount')
             },
             labels: {
-                format: '¥{value} m',
+                format: null,
+                formatter: get_chinese_number
             },
             maxPadding: 0.2,
             lineWidth: 1
@@ -292,7 +298,8 @@ var get_age_data = function(){
                 text: trsl('Total Amount')
             },
             labels: {
-                format: '¥{value} m',
+                format: null,
+                formatter: get_chinese_number
             },
             maxPadding: 0.2,
             lineWidth: 1
@@ -337,8 +344,8 @@ var get_focus_type_data = function (type){
                 text: trsl('Total Donations')
             },
             labels: {
-                format: '¥{value} m',
-                formatter: null
+                format: null,
+                formatter: get_chinese_number
             },
             tickInterval: null
         },
@@ -349,7 +356,8 @@ var get_focus_type_data = function (type){
                 text: trsl(type + ' Donations')
             },
             labels: {
-                format: '¥{value} m',
+                format: null,
+                formatter: get_chinese_number
             },
             maxPadding: 0.2,
             lineWidth: 1

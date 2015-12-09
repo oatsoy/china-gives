@@ -55,8 +55,10 @@ function trsl_arr(par) {
 
 function trsl_int(n){	
 	if (!is_chinese())
-		return n + '';
+		return n + '';	
 	n = parseInt(n.replace('¥', '').replace('m', '').replace('mln', '').replace('Million', ''));
+	if (n == 0)
+		return n;
 	if (n < 100)
 		return n + '00万元';
 	var fixed = (parseFloat(n) / 100).toFixed(2);
