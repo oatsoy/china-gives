@@ -456,6 +456,9 @@ var init_charts = function (data){
                 }
             },
             bubble: {
+                dataLabels: {
+                    color: '#FFF'
+                },
                 events: {
                     click: function (e){
                         var person_number = e.point.person_number;
@@ -525,7 +528,7 @@ function add_chart_point(data_list, chart, data){
             data: [data],
             showInLegend: data_list.showInLegend,
             marker: {
-              fillOpacity: 0.8
+              fillOpacity: 0.65
             },
         }, false);
     }
