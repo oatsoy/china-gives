@@ -523,7 +523,10 @@ function add_chart_point(data_list, chart, data){
             name: trsl(data_list.name),
             color: get_industry_color(data_list.name),
             data: [data],
-            showInLegend: data_list.showInLegend
+            showInLegend: data_list.showInLegend,
+            marker: {
+              fillOpacity: 0.8
+            },
         }, false);
     }
 }
