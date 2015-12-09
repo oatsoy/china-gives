@@ -590,11 +590,13 @@ function draw_chart(link){
     link.addClass('active');
 }
 
-function redraw_chart(){
-    var param = get_param();
-    if (!param)
-        param = 'generosity';
-    draw_chart($('[data-chart-type="' + param + '"][data-chart-action]'));
+function redraw_chart(without_data_init){
+    if (!without_data_init){
+        var param = get_param();
+        if (!param)
+            param = 'generosity';
+        draw_chart($('[data-chart-type="' + param + '"][data-chart-action]'));
+    }
     var chart = $('#series_chart_div').highcharts();
     var width = $('.chart-wrapper').width();
     if ($("#page-top").hasClass('fix-charts'))
