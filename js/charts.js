@@ -174,7 +174,7 @@ var get_focus_data = function (){
                 text: trsl('Philanthropic Causes')
             },
             labels: {
-                format: '{value}%'
+                format: '{value}'
             },
             maxPadding: 0.2,
             lineWidth: 1
@@ -283,7 +283,7 @@ var get_age_data = function(){
                 format: '{value}',
                 formatter: null
             },
-            tickInterval: null
+            tickInterval: 5
         },
         yAxis: {
             startOnTick: false,
