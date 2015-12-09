@@ -50,6 +50,13 @@ var get_industry_color = function (industry){
 	var def_colors = [['Manufacturing', '#368DB9'], ['Real Estate', '#A51C30'], ['Energy', '#FAAE53'], ['Consumer', '#52854C'], ['Tech/IT','#293352'], 
                       ['Finance', '#48c4b7'], ['Education', '#861657'], ['Healthcare', '#CED665'], ['Transportation', '#8C8179'], ['Other', '#80475E'],
                       ['Month Series', '#293352']];
+
+    var defs_to_fetch = def_colors;
+    
+    $.each(defs_to_fetch, function (index, item){
+        def_colors.push([trsl(item[0]), item[1]]);
+    });                  
+
     var res = $.grep(def_colors, function(n){
 			   	  return n[0] == industry;
 			  });    	        
@@ -329,7 +336,7 @@ var get_focus_type_data = function (type){
             startOnTick: false,
             endOnTick: false,
             title: {
-                text: trsl('Donations in ' + type)
+                text: trsl(type + ' Donations')
             },
             labels: {
                 format: '¥{value} m',
@@ -486,7 +493,6 @@ function add_chart_point(data_list, chart, data){
 
 function diff_chart_data(new_data){
 	var chart = $('#series_chart_div').highcharts();
-
 	$.each(new_data, function (index, new_data_list){
 		$.each(new_data_list.data, function (i, data){
 			var matched = match_by_id(data, current_chart_data);
@@ -497,7 +503,6 @@ function diff_chart_data(new_data){
             }
 		});
 	});	
-
 
     $.each(current_chart_data, function (index, current_data_list){
         $.each(current_data_list.data, function (i, data){
@@ -516,6 +521,7 @@ function diff_chart_data(new_data){
             series_to_remove.push(serie.name);
         }
     }); 
+
     $.each(series_to_remove, function (index, serie_index){
         var serie = $.grep(chart.series, function (item){
             return item.name == serie_index;

@@ -2,11 +2,15 @@ var words_in_list;
 var chart_data_for_trsl;
 
 function trsl(str) {
+
 	if (!is_chinese())
 		return str;
 
 	if (!words_in_list)
 		words_in_list = word_list();
+
+	if (!str)
+		return str;
 
 	var mlny = false;
 	if (str.indexOf(' (Million Yuan)') >= 0){
