@@ -415,7 +415,6 @@ var get_months_data = function(){
                 text: ''
             },
             labels: {
-                format: ' ',
                 enabled: false
             },
             maxPadding: 0.2,
