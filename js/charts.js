@@ -126,6 +126,7 @@ var get_generosity_data = function (){
                 text: trsl('Generosity')
             },
             labels: {
+            	enabled: true,
                 format: '{value}%'
             },
             maxPadding: 0.2,
@@ -179,6 +180,7 @@ var get_focus_data = function (){
                 text: trsl('Philanthropic Causes')
             },
             labels: {
+            	enabled: true,
                 format: '{value}'
             },
             maxPadding: 0.2,
@@ -238,6 +240,7 @@ var get_industry_data = function (){
                 text: trsl('Total Amount')
             },
             labels: {
+            	enabled: true,
                 format: null,
                 formatter: get_chinese_number
             },
@@ -298,6 +301,7 @@ var get_age_data = function(){
                 text: trsl('Total Amount')
             },
             labels: {
+            	enabled: true,
                 format: null,
                 formatter: get_chinese_number
             },
@@ -356,6 +360,7 @@ var get_focus_type_data = function (type){
                 text: trsl(type + ' Donations')
             },
             labels: {
+            	enabled: true,
                 format: null,
                 formatter: get_chinese_number
             },
