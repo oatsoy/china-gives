@@ -126,8 +126,10 @@ var get_generosity_data = function (){
                 text: trsl('Generosity')
             },
             labels: {
-                format: '{value}%'
+                format: '{value}%',
+                formatter: null
             },
+            tickInterval: null,
             maxPadding: 0.2,
             lineWidth: 1,
             lineColor: '#606060'
@@ -179,8 +181,10 @@ var get_focus_data = function (){
                 text: trsl('Philanthropic Causes')
             },
             labels: {
-                format: '{value}'
+                format: '{value}',
+                formatter: null
             },
+            tickInterval: 1,
             maxPadding: 0.2,
             lineWidth: 1
         },
@@ -241,6 +245,7 @@ var get_industry_data = function (){
                 format: null,
                 formatter: get_chinese_number
             },
+            tickInterval: null,
             maxPadding: 0.2,
             lineWidth: 1
         },
@@ -301,6 +306,7 @@ var get_age_data = function(){
                 format: null,
                 formatter: get_chinese_number
             },
+            tickInterval: null,
             maxPadding: 0.2,
             lineWidth: 1
         }
@@ -359,6 +365,7 @@ var get_focus_type_data = function (type){
                 format: null,
                 formatter: get_chinese_number
             },
+            tickInterval: null,
             maxPadding: 0.2,
             lineWidth: 1
         }
@@ -416,7 +423,9 @@ var get_months_data = function(){
             },
             labels: {
                 format: ' ',
+                formatter: null
             },
+            tickInterval: null,
             maxPadding: 0.2,
             lineWidth: 0
         }
@@ -613,17 +622,7 @@ function redraw_chart(without_data_init){
         chart.setSize(width, wrapper_max_height, doAnimation = true);
 }
 
-function check_scroll_to_people(){
-    if (window.location.href.indexOf('#people') > -1){
-        $('html, body').animate({
-            scrollTop: $("#people").offset().top - 400
-        }, 1000);
-    }
-}
-
 $(function (){
-
-    check_scroll_to_people();
 
     wrapper_max_height = $('.chart-wrapper').height();
 

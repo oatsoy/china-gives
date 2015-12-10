@@ -46,12 +46,12 @@ function map_height() {
   });
 }
 
-function must_fix(that){
-  return $(that).scrollTop() > 40 && $(window).height() >= 600 && $(window).width() >= 768;
+function must_fix(){
+  return $(window).scrollTop() > 40 && $(window).height() >= 600 && $(window).width() >= 768;
 }
 
-function will_fix(that){
-  return $(that).scrollTop() <= 40 && $(window).height() >= 600 && $(window).width() >= 768;
+function will_fix(){
+  return $(window).scrollTop() <= 40 && $(window).height() >= 600 && $(window).width() >= 768;
 }
 
 function fix_chart(that){
@@ -105,7 +105,17 @@ function randomize_axis(){
   return ((Math.floor(Math.random() * 4) - 2)/10);
 }
 
+function check_scroll_to_people(){
+    if (window.location.href.indexOf('#people') > -1){
+        $('html, body').animate({
+            scrollTop: $("#people").offset().top - (!will_fix() ? 0 : 400)
+        }, 1000);
+    }
+}
+
 $(function (){
+
+  check_scroll_to_people();
 
   get_chart_container_sizes();
 
