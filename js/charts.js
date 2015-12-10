@@ -107,7 +107,7 @@ var get_generosity_data = function (){
 		xAxis: {
             gridLineWidth: 0,
             title: {
-                text: trsl('Total Amount')
+                text: trsl('Total Donations')
             },
             labels: {
                 format: null,
@@ -167,7 +167,7 @@ var get_focus_data = function (){
 	chart_opts = {
 		xAxis: {
             title: {
-                text: trsl('Total Amount')
+                text: trsl('Total Donations')
             },
             labels: {
                 format: null,
@@ -241,7 +241,7 @@ var get_industry_data = function (){
             startOnTick: false,
             endOnTick: false,
             title: {
-                text: trsl('Total Amount')
+                text: trsl('Total Donations')
             },
             labels: {
             	enabled: true,
@@ -303,7 +303,7 @@ var get_age_data = function(){
             startOnTick: false,
             endOnTick: false,
             title: {
-                text: trsl('Total Amount')
+                text: trsl('Total Donations')
             },
             labels: {
             	enabled: true,
