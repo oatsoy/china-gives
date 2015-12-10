@@ -127,7 +127,8 @@ var get_generosity_data = function (){
             },
             labels: {
                 format: '{value}%',
-                formatter: null
+                formatter: null,
+            	enabled: true
             },
             tickInterval: null,
             maxPadding: 0.2,
@@ -182,7 +183,8 @@ var get_focus_data = function (){
             },
             labels: {
                 format: '{value}',
-                formatter: null
+                formatter: null,
+            	enabled: true
             },
             tickInterval: 1,
             maxPadding: 0.2,
@@ -242,6 +244,7 @@ var get_industry_data = function (){
                 text: trsl('Total Amount')
             },
             labels: {
+            	enabled: true,
                 format: null,
                 formatter: get_chinese_number
             },
@@ -303,6 +306,7 @@ var get_age_data = function(){
                 text: trsl('Total Amount')
             },
             labels: {
+            	enabled: true,
                 format: null,
                 formatter: get_chinese_number
             },
@@ -362,6 +366,7 @@ var get_focus_type_data = function (type){
                 text: trsl(type + ' Donations')
             },
             labels: {
+            	enabled: true,
                 format: null,
                 formatter: get_chinese_number
             },
@@ -423,7 +428,8 @@ var get_months_data = function(){
             },
             labels: {
                 format: ' ',
-                formatter: null
+                formatter: null,
+                enabled: false
             },
             tickInterval: null,
             maxPadding: 0.2,
