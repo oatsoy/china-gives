@@ -10,6 +10,10 @@ var currentMousePos = { x: -1, y: -1 };
 var c_c_h;
 var c_c_w;
 
+function is_charts(){
+  return window.location.href.indexOf("/charts") > -1;
+}
+
 function without_hash(str){
    return str.indexOf("#") > -1 ? str.split('#')[0] : str;
 }
@@ -115,28 +119,30 @@ function check_scroll_to_people(){
 
 $(function (){
 
-  check_scroll_to_people();
+  if (is_charts()){
 
-  get_chart_container_sizes();
+    check_scroll_to_people();
 
-  var base_url = get_base_url();
-  $(window).scroll(function(e) {
-    fix_chart(this);
+    get_chart_container_sizes();
+
+    $(window).scroll(function(e) {
+      fix_chart(this);
+      auto_hide_fixed_charts();
+    }); 
+
+    $('#chart-toggle').click(function (){
+      var chart_container = $('#charts-container');
+      is_chart_closed = !chart_container.hasClass('closed'); 
+      if (!is_chart_closed)
+        chart_container.removeClass('closed');
+      else
+        chart_container.addClass('closed');
+    });
+
     auto_hide_fixed_charts();
-  }); 
 
-  $('#chart-toggle').click(function (){
-    var chart_container = $('#charts-container');
-    is_chart_closed = !chart_container.hasClass('closed'); 
-    if (!is_chart_closed)
-      chart_container.removeClass('closed');
-    else
-      chart_container.addClass('closed');
-  });
-
-  auto_hide_fixed_charts();
-
-  // resize_charts();
+    // resize_charts();
+  }
 
   map_height();
 
@@ -149,7 +155,9 @@ $(function (){
 });
 
 $(window).on('resize', function(){
-  get_chart_container_sizes();
-  resize_charts();
+  if (is_charts()){
+    get_chart_container_sizes();
+    resize_charts();
+  }
   map_height();
 });
