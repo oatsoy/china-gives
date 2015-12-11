@@ -163,31 +163,31 @@ function word_list(){
 		},
 		{
 			en: 'Total Donations',
-			cn: '总捐赠额'
+			cn: '捐赠总额'
 		},
 		{
 			en: 'Cultural Donations',
-			cn: '文化捐赠总额'
+			cn: '文化捐赠额'
 		},
 		{
 			en: 'Social Welfare Donations',
-			cn: '社会福利捐赠总额'
+			cn: '社会福利捐赠额'
 		},
 		{
 			en: 'Disaster Relief Donations',
-			cn: '救灾捐赠总额'
+			cn: '救灾捐赠额'
 		},
 		{
 			en: 'Environmental Donations',
-			cn: '环保捐赠总额'
+			cn: '环保捐赠额'
 		},
 		{
 			en: 'Educational Donations',
-			cn: '教育捐赠总额'
+			cn: '教育捐赠额'
 		},
 		{
 			en: 'Healthcare Donations',
-			cn: '医疗捐赠总额'
+			cn: '医疗捐赠额'
 		},
 		{
 			en: 'Sep 14',
