@@ -123,7 +123,7 @@ function maps_helper(){
 				            href: "javascript:void(0);",
 				            tooltip: {
 				                content: '<b>' + province_name + '</b> <br>' + 
-				                		 (!is_chinese() ? '<b>Giving amount:</b> ' : '<b>捐赠数额</b> ') + trsl_int('¥' + val + ' m') + '<br>' + 
+				                		 (!is_chinese() ? '<b>Amount Donated:</b> ' : '<b>捐赠数额</b> ') + trsl_int('¥' + val + ' m') + '<br>' + 
 				                		 (!is_chinese() ? '<b>Philanthropists:</b> ' : '<b>慈善家人数</b> ') + that.fetch_province_data(item['Province'], 'Philanthropists') + '<br>' + 
 				                		 (!is_chinese() ? '<b>Leader:</b> ' : '<b>慈善领袖</b> ') + trsl_leader(that.fetch_province_data(item['Province'], 'Leader'))
 				            }
@@ -154,7 +154,7 @@ function maps_helper(){
 				            href: "javascript:void(0);",
 				            tooltip: {
 				                content: '<b>' + province_name + '</b> <br>' + 
-				                		 (!is_chinese() ? '<b>Received amount:</b> ' : '<b>受捐数额</b> ' ) + trsl_int('¥' + val + ' m')
+				                		 (!is_chinese() ? '<b>Amount Received:</b> ' : '<b>受捐数额</b> ' ) + trsl_int('¥' + val + ' m')
 				            }
 						}
 					}
@@ -200,8 +200,8 @@ function maps_helper(){
 					var loc = that.fetch_location_data(item['Province']);
 					if (loc){
 						var province_name = !is_chinese() ? item['Province'] : loc['Province CN'];
-						var gvng = !is_chinese() ? 'giving' : '捐赠';
-						var rcvd = !is_chinese() ? 'received' : '受捐';
+						var gvng = !is_chinese() ? 'Donated' : '捐赠';
+						var rcvd = !is_chinese() ? 'Received' : '受捐';
 						var tooltip_text = '<b>' + province_name + ' ' + gvng + '</b> <br>';
 						var receiving_text = '<br><b>' + province_name + ' ' + rcvd + '</b> <br>';
 						var giving = false;
