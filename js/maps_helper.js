@@ -186,7 +186,7 @@ function maps_helper(){
 				            href: "javascript:void(0);",
 				            tooltip: {
 				                content: '<b>' + province_name + '</b> <br>' + 
-				                		 (!is_chinese() ? '<b>Received amount:</b> ' : '<b>受捐数额</b> ' ) + trsl_int('¥' + val + ' m')
+				                		 (!is_chinese() ? '<b>Amount Received:</b> ' : '<b>受捐数额</b> ' ) + trsl_int('¥' + val + ' m')
 				            }
 						}
 					}
