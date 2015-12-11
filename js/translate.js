@@ -166,7 +166,7 @@ function word_list(){
 			cn: '总捐赠额'
 		},
 		{
-			en: 'Culture Donations',
+			en: 'Cultural Donations',
 			cn: '文化捐赠总额'
 		},
 		{
@@ -178,11 +178,11 @@ function word_list(){
 			cn: '救灾捐赠总额'
 		},
 		{
-			en: 'Environment Donations',
+			en: 'Environmental Donations',
 			cn: '环保捐赠总额'
 		},
 		{
-			en: 'Education Donations',
+			en: 'Educational Donations',
 			cn: '教育捐赠总额'
 		},
 		{

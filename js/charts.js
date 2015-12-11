@@ -19,8 +19,16 @@ function get_base_url(){
 }
 
 function get_chinese_number(){
+    if (this.value < 0)
+        return '';
     var val = '¥' + this.value + ' m';
     return trsl_int(val);
+}
+
+function standart_formatter(that, str){
+    if (that.value < 0)
+        return '';
+    return str.replace('{value}', that.value);
 }
 
 var get_initals = function(name){
@@ -126,8 +134,10 @@ var get_generosity_data = function (){
                 text: trsl('Generosity')
             },
             labels: {
-                format: '{value}%',
-                formatter: null,
+                format: null,
+                formatter: function (){
+                    return standart_formatter(this, '{value}%');
+                },
             	enabled: true
             },
             tickInterval: null,
@@ -182,8 +192,10 @@ var get_focus_data = function (){
                 text: trsl('Philanthropic Causes')
             },
             labels: {
-                format: '{value}',
-                formatter: null,
+                format: null,
+                formatter: function (){
+                    return standart_formatter(this, '{value}');
+                },
             	enabled: true
             },
             tickInterval: 1,
@@ -294,8 +306,10 @@ var get_age_data = function(){
                 text: trsl('Age')
             },
             labels: {
-                format: '{value}',
-                formatter: null
+                format: null,
+                formatter: function (){
+                    return standart_formatter(this, '{value}');
+                },
             },
             tickInterval: 5
         },
@@ -347,6 +361,14 @@ var get_focus_type_data = function (type){
         });
     });
 
+    var reprefix_type = function (t){
+        if ($.inArray(t, ['Education', 'Environment']) >= 0)
+            return t + 'al';
+        if (t == 'Culture')
+            return 'Cultural';
+        return t;
+    }
+
     chart_opts = {
         xAxis: {
             
@@ -363,7 +385,7 @@ var get_focus_type_data = function (type){
             startOnTick: false,
             endOnTick: false,
             title: {
-                text: trsl(type + ' Donations')
+                text: trsl(reprefix_type(type) + ' Donations')
             },
             labels: {
             	enabled: true,
