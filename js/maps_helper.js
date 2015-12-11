@@ -167,6 +167,9 @@ function maps_helper(){
 			var that = this;
 			var res = {};
 			var pre_res = {};
+			var gvng = !is_chinese() ? 'Donated' : '捐赠';
+			var rcvd = !is_chinese() ? 'Received' : '受捐';
+
 			$.each(map_initial_data, function(index, item){
 				var info_name = item['Province'] + '_Info';
 				var val = that.fetch_province_data(item['Province'], 'Total amount received');
@@ -175,6 +178,16 @@ function maps_helper(){
 					if (loc && loc['Latitude'] > 0){
 						var province_name = !is_chinese() ? item['Province'] : loc['Province CN'];				
 						val -= that.fetch_province_data(item['Province'], item['Province']);
+
+						var receiving_text = '<b>' + province_name + ' ' + rcvd + '</b> <br>';
+
+						$.each(region_data, function(ind, region_item){
+							var receiveing_amount = that.fetch_province_data(region_item['Province'], item['Province']);
+							if (receiveing_amount > 0 && region_item['Province'] != item['Province']){
+								receiving_text += '<b>' + (!is_chinese() ? region_item['Province'] : region_item['Province CN']) + ':</b> ' + trsl_int('¥' + receiveing_amount + ' m') + '<br>';
+							}
+						});
+
 						pre_res[info_name] = {
 							value: val,
 				            latitude: loc['Latitude'],
@@ -185,8 +198,7 @@ function maps_helper(){
 				            },
 				            href: "javascript:void(0);",
 				            tooltip: {
-				                content: '<b>' + province_name + '</b> <br>' + 
-				                		 (!is_chinese() ? '<b>Amount Received:</b> ' : '<b>受捐数额</b> ' ) + trsl_int('¥' + val + ' m')
+				                content: receiving_text
 				            }
 						}
 					}
@@ -199,9 +211,7 @@ function maps_helper(){
 				if (val) {
 					var loc = that.fetch_location_data(item['Province']);
 					if (loc){
-						var province_name = !is_chinese() ? item['Province'] : loc['Province CN'];
-						var gvng = !is_chinese() ? 'Donated' : '捐赠';
-						var rcvd = !is_chinese() ? 'Received' : '受捐';
+						var province_name = !is_chinese() ? item['Province'] : loc['Province CN'];						
 						var tooltip_text = '<b>' + province_name + ' ' + gvng + '</b> <br>';
 						var receiving_text = '<br><b>' + province_name + ' ' + rcvd + '</b> <br>';
 						var giving = false;
