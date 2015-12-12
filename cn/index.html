@@ -168,7 +168,7 @@ language: cn
                     {% assign industry_class = industry_class | replace: '/', '-' %}
 
                     <div class="{% if i == 1 or i == 6 %}col-md-offset-1{% endif %} col-md-2 col-sm-6 col-xs-6 mg-top-25 person-box top-giver wow pulse" id="generous-person-container-{{ person.['Ranking'] }}">
-                       <div class="circle">
+                       <div class="circle {% if person.['Bio CN'] != 0 %}with-bio{% endif %}">
                             <div class="circle-text {% if person.['Image URL'] != 0 %}with-bg-image{% endif %}">
                                 {% if person.['Image URL'] != 0 %}
                                 <div class="giver-image" style="background-image: url({{ person.['Image URL'] }});"></div>
@@ -199,13 +199,24 @@ language: cn
                             </div>
                             <div class="details">
                                 <div class="content">
-                                    <ul class="no-bullets">
-                                        <li><span class="text-muted">年龄</span> {% if person.['Age'] > 0 %} {{ person.['Age'] }} {% else %} N.A. {% endif %}</li>
-                                        <li><span class="text-muted">慷慨指数</span>{% if person.['Generosity'] != 0 %} {{person.['Generosity']}} {% else %} N.A. {% endif %}</li>
-                                        <li><span class="text-muted">位置</span>{% if person.['From Province'] != 0 %} {{ person.['Province CN'] }} {% else %} N.A. {% endif %}</li>
-                                        <li><span class="text-muted">行业</span> {{ person.['Industry CN'] }}</li>
-                                        <li><span class="text-muted">关注领域</span> {{ focuses }}</li>
-                                    </ul>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <ul class="no-bullets">
+                                                <li><span class="text-muted">年龄</span> {% if person.['Age'] > 0 %} {{ person.['Age'] }} {% else %} N.A. {% endif %}</li>
+                                                <li><span class="text-muted">慷慨指数</span>{% if person.['Generosity'] != 0 %} {{person.['Generosity']}} {% else %} N.A. {% endif %}</li>
+                                                <li><span class="text-muted">位置</span>{% if person.['From Province'] != 0 %} {{ person.['Province CN'] }} {% else %} N.A. {% endif %}</li>
+                                                <li><span class="text-muted">行业</span> {{ person.['Industry CN'] }}</li>
+                                                <li><span class="text-muted">关注领域</span> {{ focuses }}</li>
+                                            </ul>
+                                        </div>
+                                    </div>    
+                                    {% if person.['Bio CN'] != 0 %}
+                                        <div class="row bio">
+                                            <div class="col-sm-12">
+                                                {{ person.['Bio CN'] }}
+                                            </div>
+                                        </div>
+                                    {% endif %}                                      
                                 </div>
                             </div>
                         </div>
@@ -282,7 +293,7 @@ language: cn
                 {% assign industry_class = industry_class | downcase %}
                 {% assign industry_class = industry_class | replace: '/', '-' %}
                     <div class="{% if b == 1 or b == 6 %}col-md-offset-1{% endif %} col-md-2 col-sm-6 col-xs-6 mg-top-25 person-box top-giver wow pulse" id="person-container-{{ person.['Ranking'] }}">
-                        <div class="circle">
+                        <div class="circle {% if person.['Bio CN'] != 0 %}with-bio{% endif %}">
                             <div class="circle-text {% if person.['Image URL'] != 0 %}with-bg-image{% endif %}">
                                 {% if person.['Image URL'] != 0 %}
                                 <div class="giver-image" style="background-image: url({{ person.['Image URL'] }});"></div>
@@ -313,13 +324,24 @@ language: cn
                             </div>
                             <div class="details">
                                 <div class="content">
-                                    <ul class="no-bullets">
-                                        <li><span class="text-muted">年龄</span> {% if person.['Age'] > 0 %} {{ person.['Age'] }} {% else %} N.A. {% endif %}</li>
-                                        <li><span class="text-muted">慷慨指数</span>{% if person.['Generosity'] != 0 %} {{person.['Generosity']}} {% else %} N.A. {% endif %}</li>
-                                        <li><span class="text-muted">位置</span>{% if person.['From Province'] != 0 %} {{ person.['Province CN'] }} {% else %} N.A. {% endif %}</li>
-                                        <li><span class="text-muted">行业</span> {{ person.['Industry CN'] }}</li>
-                                        <li><span class="text-muted">关注领域</span> {{ focuses }}</li>
-                                    </ul>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <ul class="no-bullets">
+                                                <li><span class="text-muted">年龄</span> {% if person.['Age'] > 0 %} {{ person.['Age'] }} {% else %} N.A. {% endif %}</li>
+                                                <li><span class="text-muted">慷慨指数</span>{% if person.['Generosity'] != 0 %} {{person.['Generosity']}} {% else %} N.A. {% endif %}</li>
+                                                <li><span class="text-muted">位置</span>{% if person.['From Province'] != 0 %} {{ person.['Province CN'] }} {% else %} N.A. {% endif %}</li>
+                                                <li><span class="text-muted">行业</span> {{ person.['Industry CN'] }}</li>
+                                                <li><span class="text-muted">关注领域</span> {{ focuses }}</li>
+                                            </ul>
+                                        </div>
+                                    </div>    
+                                    {% if person.['Bio CN'] != 0 %}
+                                        <div class="row bio">
+                                            <div class="col-sm-12">
+                                                {{ person.['Bio CN'] }}
+                                            </div>
+                                        </div>
+                                    {% endif %}                                      
                                 </div>
                             </div>
                         </div>

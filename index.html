@@ -168,7 +168,7 @@ language: en
                     {% assign industry_class = industry_class | replace: '/', '-' %}
 
                     <div class="{% if i == 1 or i == 6 %}col-md-offset-1{% endif %} col-md-2 col-sm-6 col-xs-6 mg-top-25 person-box top-giver wow pulse" id="generous-person-container-{{ person.['Ranking'] }}">
-                        <div class="circle">
+                        <div class="circle {% if person.['Bio Eng'] != 0 %}with-bio{% endif %}">
                             <div class="circle-text {% if person.['Image URL'] != 0 %}with-bg-image{% endif %}">
                                 {% if person.['Image URL'] != 0 %}
                                 <div class="giver-image" style="background-image: url({{ person.['Image URL'] }});"></div>
@@ -185,13 +185,24 @@ language: en
                             </div>
                             <div class="details">
                                 <div class="content">
-                                    <ul class="no-bullets">
-                                        <li><span class="text-muted">Age:</span> {% if person.['Age'] > 0 %} {{ person.['Age'] }} {% else %} N.A. {% endif %}</li>
-                                        <li><span class="text-muted">Generosity:</span> {% if person.['Generosity'] != 0 %} {{person.['Generosity']}} {% else %} N.A. {% endif %}</li>
-                                        <li><span class="text-muted">Province:</span> {% if person.['From Province'] != 0 %} {{ person.['From Province'] }} {% else %} N.A. {% endif %}</li>
-                                        <li><span class="text-muted">Industry:</span> {{ person.['Industry'] }}</li>
-                                        <li><span class="text-muted">Focus:</span> {{ focuses }}</li>
-                                    </ul>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <ul class="no-bullets">
+                                                <li><span class="text-muted">Age:</span> {% if person.['Age'] > 0 %} {{ person.['Age'] }} {% else %} N.A. {% endif %}</li>
+                                                <li><span class="text-muted">Generosity:</span> {% if person.['Generosity'] != 0 %} {{person.['Generosity']}} {% else %} N.A. {% endif %}</li>
+                                                <li><span class="text-muted">Province:</span> {% if person.['From Province'] != 0 %} {{ person.['From Province'] }} {% else %} N.A. {% endif %}</li>
+                                                <li><span class="text-muted">Industry:</span> {{ person.['Industry'] }}</li>
+                                                <li><span class="text-muted">Focus:</span> {{ focuses }}</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    {% if person.['Bio Eng'] != 0 %}
+                                        <div class="row bio">
+                                            <div class="col-sm-12">
+                                                {{ person.['Bio Eng'] }}
+                                            </div>
+                                        </div>
+                                    {% endif %}                                        
                                 </div>
                             </div>
                         </div>
@@ -268,7 +279,7 @@ language: en
                 {% assign industry_class = industry_class | downcase %}
                 {% assign industry_class = industry_class | replace: '/', '-' %}
                     <div class="{% if b == 1 or b == 6 %}col-md-offset-1{% endif %} col-md-2 col-sm-6 col-xs-6 mg-top-25 person-box top-giver wow pulse" id="person-container-{{ person.['Ranking'] }}">
-                        <div class="circle">
+                        <div class="circle {% if person.['Bio Eng'] != 0 %}with-bio{% endif %}">
                             <div class="circle-text {% if person.['Image URL'] != 0 %}with-bg-image{% endif %}">
                                 {% if person.['Image URL'] != 0 %}
                                 <div class="giver-image" style="background-image: url({{ person.['Image URL'] }});"></div>
@@ -285,13 +296,24 @@ language: en
                             </div>
                             <div class="details">
                                 <div class="content">
-                                    <ul class="no-bullets">
-                                        <li><span class="text-muted">Age:</span> {% if person.['Age'] > 0 %} {{ person.['Age'] }} {% else %} N.A. {% endif %}</li>
-                                        <li><span class="text-muted">Generosity:</span> {% if person.['Generosity'] != 0 %} {{person.['Generosity']}} {% else %} N.A. {% endif %}</li>
-                                        <li><span class="text-muted">Province:</span> {% if person.['From Province'] != 0 %} {{ person.['From Province'] }} {% else %} N.A. {% endif %}</li>
-                                        <li><span class="text-muted">Industry:</span> {{ person.['Industry'] }}</li>
-                                        <li><span class="text-muted">Focus:</span> {{ focuses }}</li>
-                                    </ul>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <ul class="no-bullets">
+                                                <li><span class="text-muted">Age:</span> {% if person.['Age'] > 0 %} {{ person.['Age'] }} {% else %} N.A. {% endif %}</li>
+                                                <li><span class="text-muted">Generosity:</span> {% if person.['Generosity'] != 0 %} {{person.['Generosity']}} {% else %} N.A. {% endif %}</li>
+                                                <li><span class="text-muted">Province:</span> {% if person.['From Province'] != 0 %} {{ person.['From Province'] }} {% else %} N.A. {% endif %}</li>
+                                                <li><span class="text-muted">Industry:</span> {{ person.['Industry'] }}</li>
+                                                <li><span class="text-muted">Focus:</span> {{ focuses }}</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    {% if person.['Bio Eng'] != 0 %}
+                                        <div class="row bio">
+                                            <div class="col-sm-12">
+                                                {{ person.['Bio Eng'] }}
+                                            </div>
+                                        </div>
+                                    {% endif %}   
                                 </div>
                             </div>
                         </div>
