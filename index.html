@@ -118,12 +118,51 @@ language: en
     <div class="container">
         <div class="row">
         {% assign a = 1 %}
+        {% assign focus_number = 0 %}
+        {% assign generosity_number = 0 %}
+        {% assign industry_number = 0 %}
+        {% assign age_number = 0 %}
+
+        {% assign education_number = 0 %}
+        {% assign environment_number = 0 %}
+        {% assign healthcare_number = 0 %}
+        {% assign social_number = 0 %}
+        {% assign disaster_number = 0 %}
+        {% assign culture_number = 0 %}
 
         {% for i in (1..10) %}
         
             {% for person in site.data.persons %}
 
                 {% if person.['GI Rank'] == i %}
+                {% assign focuses = "a|b" | split: "|" %}
+                {% if person.['Education'] > 0 %}
+                     {% assign focuses = focuses | push: "Education" %}
+                {% endif %}
+                {% if person.['Environment'] > 0 %}
+                     {% assign focuses = focuses | push: "Environment" %}
+                {% endif %}
+                {% if person.['Healthcare'] > 0 %}
+                     {% assign focuses = focuses | push: "Healthcare" %}
+                {% endif %}
+                {% if person.['Social Welfare'] > 0 %}
+                     {% assign focuses = focuses | push: "Social Welfare" %}
+                {% endif %}
+                {% if person.['Disaster Relief'] > 0 %}
+                     {% assign focuses = focuses | push: "Disaster Relief" %}
+                {% endif %}
+                {% if person.['Culture'] > 0 %}
+                     {% assign focuses = focuses | push: "Culture" %}
+                {% endif %}
+
+                {% assign focuses = focuses | array_to_sentence_string %}
+                {% assign focuses = focuses | replace: 'a, b,', '' %}
+                {% assign focuses = focuses | replace: 'and', '' %}
+
+                {% assign industry_class = person.['Industry'] | split: &nbsp; %}
+                {% assign industry_class = industry_class | join: '-' %}
+                {% assign industry_class = industry_class | downcase %}
+                {% assign industry_class = industry_class | replace: '/', '-' %}
 
                 <div class="{% if i == 1 or i == 6 %}col-md-offset-1{% endif %} col-md-2 col-sm-6 col-xs-6 mg-top-25 person-box top-giver wow pulse" id="generous-person-container-{{ person.['Ranking'] }}">
                         <div class="circle">
