@@ -107,10 +107,71 @@ language: en
 </section>
 
 <section id="top-givers" class="top-givers with-nxt-sct-btn">
-    <div class="container">
+        <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
-                <h2 class="section-heading">Top Givers</h2>
+                <h2 class="section-heading">Top 10 - Generosity</h2> <span class="info" data-toggle="tooltip" title="Generosity Index measures a philanthropist’s willingness to give by dividing annual donations by the value of shares the philanthropist owns in any publicly traded companies, a proxy for his or her level of wealth."><i class="fa fa-lg fa-info-circle"></i></span>
+                <hr class="">
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+        {% assign a = 1 %}
+
+        {% for i in (1..10) %}
+        
+            {% for person in site.data.persons %}
+
+                {% if person.['GI Rank'] == i %}
+
+                <div class="{% if i == 1 or i == 6 %}col-md-offset-1{% endif %} col-md-2 col-sm-6 col-xs-6 mg-top-25 person-box top-giver wow pulse" id="generous-person-container-{{ person.['Ranking'] }}">
+                        <div class="circle">
+                            <div class="circle-text {% if person.['Image URL'] != 0 %}with-bg-image{% endif %}">
+                                {% if person.['Image URL'] != 0 %}
+                                <div class="giver-image" style="background-image: url({{ person.['Image URL'] }});"></div>
+                                {% else %}
+                                <div class="person-placeholder">
+                                    <i class="fa fa-user"></i>
+                                </div>
+                                {% endif %}
+                                <div class="content">
+                                    <div>{{ a }}</div>
+                                    <h4 class="card-name-container" data-name="{{ person.['Name Eng'] }}">{{ person.['Name Eng'] }}</h4>
+                                    <div>¥{{ person.['Total Amount (million Yuan)'] }} Million</div>
+                                </div>
+                            </div>
+                            <div class="details">
+                                <div class="content">
+                                    <ul class="no-bullets">
+                                        <li><span class="text-muted">Age:</span> {% if person.['Age'] > 0 %} {{ person.['Age'] }} {% else %} N.A. {% endif %}</li>
+                                        <li><span class="text-muted">Generosity:</span> {% if person.['Generosity'] != 0 %} {{person.['Generosity']}} {% else %} N.A. {% endif %}</li>
+                                        <li><span class="text-muted">Province:</span> {% if person.['From Province'] != 0 %} {{ person.['From Province'] }} {% else %} N.A. {% endif %}</li>
+                                        <li><span class="text-muted">Industry:</span> {{ person.['Industry'] }}</li>
+                                        <li><span class="text-muted">Focus:</span> {{ focuses }}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                {% endif %}             
+
+            {% endfor %}
+
+        {% endfor %}
+        </div>
+        <div class="row">
+            <div class="col-xs-12 text-center mg-top-50">
+                <a href="charts.html?generosity" class="btn btn-primary btn-xl"><i class="fa fa-bar-chart"></i> View Chart</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mg-top-100">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading">Top 10 - Giving</h2>
                 <hr class="">
             </div>
         </div>

@@ -403,6 +403,15 @@ section.bg-image.findings div.background-image {
     overflow: hidden;
 }
 
+.top-givers h2.section-heading {
+    display: inline-block;
+}
+
+span.info {
+    position: relative;
+    top: -5px;
+}
+
 .person-box.top-giver .person-placeholder {
     position: absolute;
     top: 10px;
