@@ -92,7 +92,6 @@ type: charts
         <div class="row">
         {% assign a = 0 %}
         {% assign b = 1 %}
-        {% assign i = 0 %}
 
         {% assign focus_number = 0 %}
         {% assign generosity_number = 0 %}
@@ -170,7 +169,7 @@ type: charts
                         </div>
                     </div>
                 </div>            
-            {% assign i = i | plus: 1 %} 
+
             {% if a == 9%}
                 {% assign a = 0 %}
             {% else %}

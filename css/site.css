@@ -54,6 +54,10 @@ ul.no-bullets li {
     margin-top: 35vh;
 }
 
+.tooltip-inner {
+  max-width: 300px;
+}
+
 /* color overrides */
 
 hr {

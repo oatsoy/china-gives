@@ -78,10 +78,9 @@ language: cn
                     <li class="wow fadeIn" data-wow-delay=".1s">24位慈善家首次进入中国慈善前100名。</li>
                     <li class="wow fadeIn" data-wow-delay=".19s">平均捐赠额为5,200万元；中位数是2,000万元。</li>
                     <li class="wow fadeIn" data-wow-delay=".265s">房地产业产生的慈善家数量最多。</li>
-                    <li class="wow fadeIn" data-wow-delay=".32s">王苗通以5.61%位于慷慨指数榜首。 <small data-toggle="tooltip" title="慷慨指数用于衡量慈善家的捐赠意愿，其方式是将慈善家的年度捐赠总额除以其持有的所有上市公司股份价值，以大致测算捐赠额占其财富的比重。"><i class="fa fa-info-circle"></i></small></li>
-                    <li class="wow fadeIn" data-wow-delay=".35s">二位慈善家做出股票或期权的捐赠承诺。他们是：马云和何巧女。</li>
-                    <li class="wow fadeIn" data-wow-delay=".37s">三位慈善家在海外进行捐助；19人拥有自己的基金会。</li>
-                    <li class="wow fadeIn" data-wow-delay=".385s">前百位慈善家平均年龄为54岁。</li>
+                    <li class="wow fadeIn" data-wow-delay=".32s">二位慈善家做出股票或期权的捐赠承诺。他们是：马云和何巧女。</li>
+                    <li class="wow fadeIn" data-wow-delay=".35s">三位慈善家在海外进行捐助；19人拥有自己的基金会。</li>
+                    <li class="wow fadeIn" data-wow-delay=".37s">前百位慈善家平均年龄为54岁。</li>
                 </ul>
             </div>
         </div>
@@ -107,10 +106,126 @@ language: cn
 </section>
 
 <section id="top-givers" class="top-givers with-nxt-sct-btn">
+    
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
-                <h2 class="section-heading">慈善领袖</h2>
+                <h2 class="section-heading">Top 10 - Generosity</h2> <span class="info" data-toggle="tooltip" title="Generosity Index measures a philanthropist’s willingness to give by dividing annual donations by the value of shares the philanthropist owns in any publicly traded companies, a proxy for his or her level of wealth."><i class="fa fa-lg fa-info-circle"></i></span>
+                <hr class="">
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+
+        {% assign focus_number = 0 %}
+        {% assign generosity_number = 0 %}
+        {% assign industry_number = 0 %}
+        {% assign age_number = 0 %}
+
+        {% assign education_number = 0 %}
+        {% assign environment_number = 0 %}
+        {% assign healthcare_number = 0 %}
+        {% assign social_number = 0 %}
+        {% assign disaster_number = 0 %}
+        {% assign culture_number = 0 %}
+
+        {% for i in (1..10) %}
+        
+            {% for person in site.data.persons %}
+
+                {% if person.['GI Rank'] == i %}
+
+                    {% assign focuses = "a|b" | split: "|" %}
+                    {% if person.['Education'] > 0 %}
+                         {% assign focuses = focuses | push: "教育" %}
+                    {% endif %}
+                    {% if person.['Environment'] > 0 %}
+                         {% assign focuses = focuses | push: "环保" %}
+                    {% endif %}
+                    {% if person.['Healthcare'] > 0 %}
+                         {% assign focuses = focuses | push: "医疗" %}
+                    {% endif %}
+                    {% if person.['Social Welfare'] > 0 %}
+                         {% assign focuses = focuses | push: "社会福利" %}
+                    {% endif %}
+                    {% if person.['Disaster Relief'] > 0 %}
+                         {% assign focuses = focuses | push: "赈灾" %}
+                    {% endif %}
+                    {% if person.['Culture'] > 0 %}
+                         {% assign focuses = focuses | push: "文化" %}
+                    {% endif %}
+
+                    {% assign focuses = focuses | array_to_sentence_string %}
+                    {% assign focuses = focuses | replace: 'a, b,', '' %}
+                    {% assign focuses = focuses | replace: 'and', '' %}
+
+                    {% assign industry_class = person.['Industry'] | split: &nbsp; %}
+                    {% assign industry_class = industry_class | join: '-' %}
+                    {% assign industry_class = industry_class | downcase %}
+                    {% assign industry_class = industry_class | replace: '/', '-' %}
+
+                    <div class="{% if i == 1 or i == 6 %}col-md-offset-1{% endif %} col-md-2 col-sm-6 col-xs-6 mg-top-25 person-box top-giver wow pulse" id="generous-person-container-{{ person.['Ranking'] }}">
+                       <div class="circle">
+                            <div class="circle-text {% if person.['Image URL'] != 0 %}with-bg-image{% endif %}">
+                                {% if person.['Image URL'] != 0 %}
+                                <div class="giver-image" style="background-image: url({{ person.['Image URL'] }});"></div>
+                                {% else %}
+                                <div class="person-placeholder">
+                                    <i class="fa fa-user"></i>
+                                </div>
+                                {% endif %}
+                                <div class="content">
+                                    <div>{{ i }}</div>
+                                    <h4 class="card-name-container" data-name="{{ person.['Name CN'] }}">{{ person.['Name CN'] }} </h4>
+                                    {% if person.['Total Amount (million Yuan)'] < 100 %}
+                                        <div>{{ person.['Total Amount (million Yuan)'] }}00万元</div>
+                                    {% else %}
+                                        {% assign base_amount = person.['Total Amount (million Yuan)'] | divided_by: 100 %}
+                                        {% assign base_hun = base_amount | times: 100 %}
+                                        {% assign mod_amount = person.['Total Amount (million Yuan)'] | minus: base_hun %}
+                                        {% if mod_amount == 0%}                                        
+                                            <div>{{ base_amount }}亿元</div>
+                                        {% elsif mod_amount < 10 %}
+                                            <div>{{ base_amount }}.0{{ mod_amount }}亿元</div>
+                                        {% endif %}    
+                                        {% if mod_amount >= 10 %}
+                                            <div>{{ base_amount }}.{{ mod_amount }}亿元</div>
+                                        {% endif %}   
+                                    {% endif %}                                
+                                </div>
+                            </div>
+                            <div class="details">
+                                <div class="content">
+                                    <ul class="no-bullets">
+                                        <li><span class="text-muted">年龄</span> {% if person.['Age'] > 0 %} {{ person.['Age'] }} {% else %} N.A. {% endif %}</li>
+                                        <li><span class="text-muted">慷慨指数</span>{% if person.['Generosity'] != 0 %} {{person.['Generosity']}} {% else %} N.A. {% endif %}</li>
+                                        <li><span class="text-muted">位置</span>{% if person.['From Province'] != 0 %} {{ person.['Province CN'] }} {% else %} N.A. {% endif %}</li>
+                                        <li><span class="text-muted">行业</span> {{ person.['Industry CN'] }}</li>
+                                        <li><span class="text-muted">关注领域</span> {{ focuses }}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                {% endif %}             
+
+            {% endfor %}
+
+        {% endfor %}
+        </div>
+        <div class="row">
+            <div class="col-xs-12 text-center mg-top-50">
+                <a href="charts.html?generosity" class="btn btn-primary btn-xl"><i class="fa fa-bar-chart"></i> View Chart</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mg-top-100">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading">Top 10 - Giving</h2>
                 <hr class="">
             </div>
         </div>
@@ -119,7 +234,6 @@ language: cn
         <div class="row">
         {% assign a = 0 %}
         {% assign b = 1 %}
-        {% assign i = 0 %}
 
         {% assign focus_number = 0 %}
         {% assign generosity_number = 0 %}
@@ -208,7 +322,7 @@ language: cn
                             </div>
                         </div>
                     </div>            
-                {% assign i = i | plus: 1 %} 
+
                 {% if a == 9%}
                     {% assign a = 0 %}
                 {% else %}
