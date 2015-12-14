@@ -101,7 +101,7 @@ var get_generosity_data = function (){
 								   return n['Industry'] == industry;
 								 });
 		fetched_industrial = $.map(fetched_industrial, function(n,i){
-							   return { x: n['Total Amount (million Yuan)'], y: parseFloat(n['Generosity']), z: n['Total Amount (million Yuan)'], name: get_initals(n["Name Eng"]),
+							   return { x: parseFloat(n['Generosity']), y: n['Total Amount (million Yuan)'], z: n['Total Amount (million Yuan)'], name: get_initals(n["Name Eng"]),
 							   			full_name: is_chinese() ? n["Name CN"] : n["Name Eng"], id: n.id, person_number: n.person_number };
 							 });
 		res.push({
@@ -114,12 +114,14 @@ var get_generosity_data = function (){
 	chart_opts = {
 		xAxis: {
             gridLineWidth: 0,
-            title: {
-                text: trsl('Total Donations')
+            title: {                
+                text: trsl('Generosity')
             },
             labels: {
                 format: null,
-                formatter: get_chinese_number
+                formatter: function (){
+                    return standart_formatter(this, '{value}%');
+                }
             },
             tickInterval: null,
             tickWidth: 0,
@@ -131,13 +133,11 @@ var get_generosity_data = function (){
             startOnTick: false,
             endOnTick: false,
             title: {
-                text: trsl('Generosity')
+                text: trsl('Total Donation')
             },
-            labels: {
+            labels: {                
                 format: null,
-                formatter: function (){
-                    return standart_formatter(this, '{value}%');
-                },
+                formatter: get_chinese_number,
             	enabled: true
             },
             tickInterval: null,
@@ -177,7 +177,7 @@ var get_focus_data = function (){
 	chart_opts = {
 		xAxis: {
             title: {
-                text: trsl('Total Donations')
+                text: trsl('Total Donation')
             },
             labels: {
                 format: null,
@@ -253,7 +253,7 @@ var get_industry_data = function (){
             startOnTick: false,
             endOnTick: false,
             title: {
-                text: trsl('Total Donations')
+                text: trsl('Total Donation')
             },
             labels: {
             	enabled: true,
@@ -317,7 +317,7 @@ var get_age_data = function(){
             startOnTick: false,
             endOnTick: false,
             title: {
-                text: trsl('Total Donations')
+                text: trsl('Total Donation')
             },
             labels: {
             	enabled: true,
@@ -351,7 +351,7 @@ var get_focus_type_data = function (type){
                                    return n['Industry'] == industry;
                                  });
         fetched_industrial = $.map(fetched_industrial, function(n,i){
-                               return { x: n['Total Amount (million Yuan)'], y: n[type], z: n['Total Amount (million Yuan)'], name: get_initals(n["Name Eng"]),
+                               return { x: n[type], y: n['Total Amount (million Yuan)'], z: n['Total Amount (million Yuan)'], name: get_initals(n["Name Eng"]),
                                         full_name: is_chinese() ? n["Name CN"] : n["Name Eng"], id: n.id, person_number: n.person_number };
                              });
         res.push({
@@ -370,10 +370,9 @@ var get_focus_type_data = function (type){
     }
 
     chart_opts = {
-        xAxis: {
-            
+        xAxis: {            
             title: {
-                text: trsl('Total Donations')
+                text: trsl(reprefix_type(type) + ' Donations')
             },
             labels: {
                 format: null,
@@ -384,8 +383,8 @@ var get_focus_type_data = function (type){
         yAxis: {
             startOnTick: false,
             endOnTick: false,
-            title: {
-                text: trsl(reprefix_type(type) + ' Donations')
+            title: {                
+                text: trsl('Total Donation')
             },
             labels: {
             	enabled: true,

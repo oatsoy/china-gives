@@ -162,11 +162,11 @@ function word_list(){
 			cn: '时间轴'
 		},
 		{
-			en: 'Total Donations',
+			en: 'Total Donation',
 			cn: '捐赠总额'
 		},
 		{
-			en: 'Cultural Donations',
+			en: 'Cultural Donation',
 			cn: '文化捐赠额'
 		},
 		{
