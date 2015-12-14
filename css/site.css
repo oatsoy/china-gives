@@ -58,6 +58,15 @@ ul.no-bullets li {
   max-width: 300px;
 }
 
+a.shadow-underline {
+    box-shadow: 0 1px 0 #fff;
+}
+
+    a.shadow-underline:hover {
+        box-shadow: none;
+    }
+
+
 /* color overrides */
 
 hr {
