@@ -413,6 +413,10 @@ section.bg-image.findings div.background-image {
     background-image: url(../img/home/overview.jpg);
 }
 
+section.findings .key-findings li {
+    margin: 10px 0;
+}
+
 /* Top givers */
 
 .top-givers {
@@ -1455,4 +1459,22 @@ section#people .container {
 .maps .nav-pills.chart-options>li.active>a>span {
     box-shadow: 0 2px 0 #fff;
     font-weight: 600;
+}
+
+.maps .flow-map-legend {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+
+.maps .flow-map-legend span.item:not(:last-child) {
+    margin-right: 20px;
+}
+
+.maps .flow-map-legend span.circle {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin-right: 5px;
+    border-radius: 50%;
 }
