@@ -72,6 +72,7 @@ function load_map_philanthropists_data(){
 		$(".mapcontainer").trigger('update', [updatedOptions, diff_res.new_plots, diff_res.deleted_plots, opt]);
 	}
 	$('.mapcontainer path[data-id^="dummy_link_"]').remove();
+	$('#map-legend').addClass('hidden');
 }
 
 function load_map_donatoin_data() {
@@ -99,6 +100,7 @@ function load_map_donatoin_data() {
 	};
 	$(".mapcontainer").trigger('update', [updatedOptions, diff_res.new_plots, diff_res.deleted_plots, opt]);	
 	$('.mapcontainer path[data-id^="dummy_link_"]').remove();
+	$('#map-legend').addClass('hidden');
 }
 
 function load_map_movement_data() {
@@ -162,6 +164,7 @@ function load_map_movement_data() {
 			}
         });					   
 	});
+	$('#map-legend').removeClass('hidden');
 }
 
 function init_map(plots) {
