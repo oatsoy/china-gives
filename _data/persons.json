@@ -18,8 +18,8 @@
     "Disaster Relief": 0,
     "Culture": 0,
     "Image URL": "http://ashchina.github.io/china-gives/img/people/he_xiangjian.jpg",
-    "Bio Eng": "He Xiangjian is the founder of Midea Group Co. Ltd., a Guangdong-based public company that makes household appliance. It sells its products globally.",
-    "Bio CN": "何享健是美的集团创始人。美的集团是一家以家电制造业为主的大型上市集团，业务遍及全球。",
+    "Bio Eng": "He Xiangjian is the founder of Midea Group Co. Ltd., a Guangdong-based producer of household appliances.",
+    "Bio CN": "何享健是美的集团创始人。位于广东的美的集团是一家以家电制造业为主的大型上市集团，业务遍及全球。",
     "": 0
   },
   {
@@ -41,8 +41,8 @@
     "Disaster Relief": 5,
     "Culture": 0,
     "Image URL": "http://ashchina.github.io/china-gives/img/people/wang_jianlin.jpg",
-    "Bio Eng": "Wang Jianlin is the Chairman of Wanda Group, a conglomerate with business interests in commercial properties, culture & tourism, e-commerce, and department stores.",
-    "Bio CN": "王健林现任万达集团董事长，集团业务包括商业地产开发，文化旅游，电子商务及连锁百货。",
+    "Bio Eng": "Wang Jianlin is the Chairman of Wanda Group, a major conglomerate with business interests in commercial property, culture & tourism, cinema, sports, and the consumer sector.",
+    "Bio CN": "王健林是万达集团董事长。该集团业务包括商业地产开发、文化旅游、影院、体育和消费。",
     "": 0
   },
   {
@@ -64,8 +64,8 @@
     "Disaster Relief": 0,
     "Culture": 0,
     "Image URL": "http://ashchina.github.io/china-gives/img/people/tang_lixin.jpg",
-    "Bio Eng": "Tang Lixin is the founder and Chairman of Shinesun Group. The firm engages in real estate development, business operation management, investment, IT sales and software & hardware development.",
-    "Bio CN": "唐立新是新尚集团创始人和董事长。新尚集团是业务涉及房地产开发、商业运营、投资、IT销售及软硬件开发的企业集团。",
+    "Bio Eng": "Tang Lixin is the founder and Chairman of Shinesun Group, engaged in real estate development, business operation management, financial investment, IT sales and software & hardware development.",
+    "Bio CN": "唐立新是新尚集团创始人和董事长。新尚集团业务涉及房地产开发、商业运营、投资、IT销售及软硬件开发。",
     "": 0
   },
   {
@@ -87,8 +87,8 @@
     "Disaster Relief": 0,
     "Culture": 0,
     "Image URL": 0,
-    "Bio Eng": "Xing Fuping is the Chairman of Livon Group with primary operations in real estate development.",
-    "Bio CN": "邢福平是以房地产开发为主业的力旺集团董事长。该公司位于吉林省长春市。",
+    "Bio Eng": "Xing Fuping is the Chairman of Livon Group, located in ____ and engaged in real estate development.",
+    "Bio CN": "邢福平是力旺集团董事长。该公司位于吉林省长春市，主要从事房地产开发。",
     "": 0
   },
   {
@@ -110,8 +110,8 @@
     "Disaster Relief": 2,
     "Culture": 0,
     "Image URL": "http://ashchina.github.io/china-gives/img/people/wang_yusuo.jpg",
-    "Bio Eng": "Wang Yusuo is the chairman of ENN Group Co. Ltd. The business of ENN range from natural gas, chemicals, to solar energy.",
-    "Bio CN": "王玉锁是河北新奥集团董事长。新奥集团是一家集天然气、能源化工及太阳能源等产业于一体的企业集团。",
+    "Bio Eng": "Wang Yusuo is the chairman of ENN Group Co. Ltd., with businesses ranging from natural gas and chemicals to solar energy.",
+    "Bio CN": "王玉锁是河北新奥集团董事长。新奥是一家集天然气、能源化工及太阳能源等产业于一体的企业集团。",
     "": 0
   },
   {
@@ -133,7 +133,7 @@
     "Disaster Relief": 0,
     "Culture": 0,
     "Image URL": "http://ashchina.github.io/china-gives/img/people/xu_lianjie.jpg",
-    "Bio Eng": "Xu Lianjie is the CEO of Hengan International Group Co. Ltd. Hengan is a publicly listed company that manufacturers and sells household and personal hygiene products.",
+    "Bio Eng": "Xu Lianjie is the CEO of Hengan International Group Co. Ltd., a manufacturer of household and personal hygiene products.",
     "Bio CN": "许连捷是恒安国际集团首席执行官。恒安是一家生产和销售家用及个人护理产品的上市公司。",
     "": 0
   },
@@ -156,8 +156,8 @@
     "Disaster Relief": 0,
     "Culture": 0,
     "Image URL": "http://ashchina.github.io/china-gives/img/people/lu_chaokang.jpg",
-    "Bio Eng": "Lu Chaokang is the Chairman of Kangde Industrial Group Co. Ltd. Kangde’s primary businesses include real estate development, construction, and property management.",
-    "Bio CN": "卢朝康是康德实业集团有限公司董事长。康德实业主营业务包括房地产开发，建筑施工及酒店和物业管理。",
+    "Bio Eng": "Lu Chaokang is the Chairman of Kangde Industrial Group Co. Ltd., with primary businesses in real estate development, construction, and property management.",
+    "Bio CN": "卢朝康是康德实业集团有限公司董事长。康德的主营业务包括房地产开发、建筑施工及酒店和物业管理。",
     "": 0
   },
   {
@@ -179,8 +179,8 @@
     "Disaster Relief": 0,
     "Culture": 0,
     "Image URL": "http://ashchina.github.io/china-gives/img/people/lu_zhiqiang.jpg",
-    "Bio Eng": "Lu Zhiqiang is the founder and Chairman of China Oceanwide Holdings Group. China Oceanwide engages in real estate development, electric power and capital investment domestically and globally.",
-    "Bio CN": "卢志强是中国泛海控股集团创始人和主席。中国泛海业务分布国内外，涉及房地产开发，电力和资本投资等行业。",
+    "Bio Eng": "Lu Zhiqiang is the founder and Chairman of China Oceanwide Holdings Group, engaged in real estate development, energy, and capital investment.",
+    "Bio CN": "卢志强是中国泛海控股集团创始人和主席。中国泛海业务涉及房地产开发、能源和资本投资等。",
     "": 0
   },
   {
@@ -202,8 +202,8 @@
     "Disaster Relief": 5,
     "Culture": 0,
     "Image URL": "http://ashchina.github.io/china-gives/img/people/jack_ma.jpg",
-    "Bio Eng": "Jack Ma Yun is the founder and Chairman of Alibaba Group. The IPO of Hangzhou-based Alibaba in September 2014 is the largest in the world.",
-    "Bio CN": "马云是阿里巴巴集团创始人和董事长。位于杭州的阿里巴巴于2014年9月在纽约上市，融资规模为全球有史以来最大。",
+    "Bio Eng": "Jack Ma Yun is the founder and Chairman of Alibaba Group, one of the world’s largest e-commerce companies.",
+    "Bio CN": "马云是阿里巴巴集团创始人和董事长。位于杭州的阿里巴巴是全球最大电子商务公司之一。",
     "": 0
   },
   {
@@ -225,8 +225,8 @@
     "Disaster Relief": 0,
     "Culture": 0,
     "Image URL": "http://ashchina.github.io/china-gives/img/people/wu_shaoxun.jpg",
-    "Bio Eng": "Wu Shaoxun is the Chairman of Jing Brand Co. Ltd. The Wuhan-based company makes wine and spirits, and serves customers in China and overseas.",
-    "Bio CN": "吴少勋现任劲牌有限公司董事长和总裁。劲牌主要生产保健酒，产品面向国内外消费者。",
+    "Bio Eng": "Wu Shaoxun is the Chairman of Jing Brand Co. Ltd., a Wuhan-based maker of wine and spirits.",
+    "Bio CN": "吴少勋是劲牌有限公司董事长和总裁。位于武汉的劲牌主要生产保健酒。",
     "": 0
   },
   {
@@ -570,8 +570,8 @@
     "Disaster Relief": 0,
     "Culture": 0,
     "Image URL": "http://ashchina.github.io/china-gives/img/people/liang_guangwei.jpg",
-    "Bio Eng": "Liang Guangwei is the Chairman of Shenzhen Huaqiang Group Co. Ltd. The publicly traded investment holding company operates in Hi-Tech electronic components manufacturing, entertainment technology, and commercial real estate sectors.",
-    "Bio CN": "梁光伟是深圳华强集团有限公司董事长。华强集团为上市投资控股企业集团，业务涉及电子制造业、文化科技及商业地产行业。",
+    "Bio Eng": "Liang Guangwei is the Chairman of Shenzhen Huaqiang Group Co. Ltd., which is engaged in electronic components production, entertainment technology, and commercial real estate development.",
+    "Bio CN": "梁光伟是深圳华强集团有限公司董事长。华强集团的业务涉及电子制造业、文化科技及商业地产行业。",
     "": 0
   },
   {
@@ -938,8 +938,8 @@
     "Disaster Relief": 0,
     "Culture": 0,
     "Image URL": "http://ashchina.github.io/china-gives/img/people/deng_wei.jpg",
-    "Bio Eng": "Deng Wei is the Chairman of BOCO Inter-Telecom Holding Co. Ltd. The company, which is listed in Shanghai, provides software applications, solutions and related technical services for telecom and transportation companies.",
-    "Bio CN": "邓伟现任亿阳通信股份有限公司主席。 亿阳通信是上市公司，主要为通信及交通行业提供应用软件、解决方案和技术服务。",
+    "Bio Eng": "Deng Wei is the Chairman of BOCO Inter-Telecom Holding Co. Ltd., providing software solutions and related technical services for the telecom and transportation sectors.",
+    "Bio CN": "邓伟是亿阳通信股份有限公司主席。亿阳通信是上市公司，主要为通信及交通行业提供应用软件、解决方案和技术服务。",
     "": 0
   },
   {
@@ -1651,8 +1651,8 @@
     "Disaster Relief": 0,
     "Culture": 0,
     "Image URL": 0,
-    "Bio Eng": "You Zhisheng is the Chairman of Wisesoft Co. Ltd. The company, based in southwestern China’s Sichuan province, is a software and system solution provider specialized in air traffic sector.",
-    "Bio CN": "游志胜是川大智胜股份有限公司董事长。位于成都的川大智胜是专注于提供空中交通领域软件技术、系统解决方案的上市公司。",
+    "Bio Eng": "You Zhisheng is the Chairman of Wisesoft Co. Ltd. The company, based in southwestern China’s Sichuan province, is a software and systems solution provider specialized in air traffic control.",
+    "Bio CN": "游志胜是川大智胜股份有限公司董事长。位于成都的川大智胜提供空中交通领域软件技术及系统解决方案。",
     "": 0
   },
   {
