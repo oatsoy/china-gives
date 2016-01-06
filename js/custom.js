@@ -147,6 +147,13 @@ $(function (){
   map_height();
 
   $('[data-toggle="tooltip"]').tooltip();
+  $('[data-toggle="popover"]').popover({
+    html : true,
+    trigger : 'focus',
+    content: function() {
+      return $('#qr-code-wrapper').html();
+    }
+  });
 
   $(document).mousemove(function(event) {
       currentMousePos.x = event.pageX;

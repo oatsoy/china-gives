@@ -9,6 +9,12 @@
 <script src="{{ "/js/jquery.fittext.js" | prepend: site.baseurl }}"></script>
 <script src="{{ "/js/wow.min.js" | prepend: site.baseurl }}"></script>
 
+<!-- QRcode.js-->
+<script src="{{ "/js/qrcode.min.js" | prepend: site.baseurl }}" type="text/javascript"></script>
+<script type="text/javascript">
+  new QRCode(document.getElementById("share-to-wechat"), "{{ site.url }}{{ site.baseurl }}{{ page.url }}");
+</script>
+
 <!-- Custom Theme JavaScript -->
 <script src="{{ "/js/creative.js" | prepend: site.baseurl }}"></script>
 

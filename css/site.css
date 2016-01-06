@@ -394,6 +394,15 @@ footer a.share-btn {
     padding: 12px 6px;
 }
 
+#qr-code-wrapper {
+    display: none;
+    visibility: hidden;
+}
+
+.popover-content {
+    padding: 5px;
+}
+
 /* Main page sections */
 
 /* Overview */
