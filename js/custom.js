@@ -11,7 +11,7 @@ var c_c_h;
 var c_c_w;
 
 function is_charts(){
-  return window.location.href.indexOf("/charts") > -1;
+  return window.location.href.indexOf("/data") > -1;
 }
 
 function without_hash(str){
