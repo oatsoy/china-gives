@@ -166,7 +166,7 @@ function word_list(){
 			cn: '捐赠总额'
 		},
 		{
-			en: 'Cultural Donation',
+			en: 'Cultural Donations',
 			cn: '文化捐赠额'
 		},
 		{
