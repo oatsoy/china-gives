@@ -940,6 +940,26 @@ section.charts .container-fluid.charts-container {
     color:#fff;
 }
 
+.chart-instructions {
+    position: absolute;
+    top: 60px;
+    right: 15px;
+    z-index: 1025;
+}
+
+.fix-charts .chart-instructions {
+    display: none;
+}
+
+.chart-instructions-popover {
+    top: 20px !important;
+}
+
+
+.chart-instructions-popover > .arrow {
+    top: 50px !important;
+}
+
 /* People */
 
 section#people .container {

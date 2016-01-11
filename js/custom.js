@@ -146,13 +146,20 @@ $(function (){
 
   map_height();
 
-  $('[data-toggle="tooltip"]').tooltip();
-  $('[data-toggle="popover"]').popover({
+  $('[data-toggle="tooltip"]').tooltip({
+    html : true
+  });
+  $('.wechat-share').popover({
     html : true,
     trigger : 'focus',
     content: function() {
       return $('#qr-code-wrapper').html();
     }
+  });
+  $('#chart-instructions').popover({
+    html : true,
+    trigger : 'hover',
+    template : '<div class="popover chart-instructions-popover" role="tooltip"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content"></div></div>'
   });
 
   $(document).mousemove(function(event) {
