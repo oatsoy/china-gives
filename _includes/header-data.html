@@ -16,7 +16,7 @@
             <ul class="nav navbar-nav navbar-right">
                 {% if page.language == 'en' %}
                 <li>
-                    <a href="{{ site.baseurl  | prepend: site.url }}"><i class="fa fa-home"></i> Home</a>
+                    <a href="{{ site.baseurl | prepend: site.url }}"><i class="fa fa-home"></i> Home</a>
                 </li>
                 <li class="{% if page.type == 'charts' %}active{% endif %}">
                     <a href="data.html"><i class="fa fa-bar-chart"></i> Data</a>
@@ -29,7 +29,7 @@
                 </li>
                 {% elsif page.language == 'cn' %}
                 <li>
-                    <a href="{{ "/cn/" | prepend: site.url }}"><i class="fa fa-home"></i> 主页</a>
+                    <a href="{{ '/cn/' | prepend: site.url }}"><i class="fa fa-home"></i> 主页</a>
                 </li>                
                 <li class="{% if page.type == 'charts' %}active{% endif %}">
                     <a href="data.html"><i class="fa fa-bar-chart"></i> 排行榜</a>
