@@ -14,25 +14,25 @@
     {% include shared-js.html %}
 
 
-    <script src="{{ "/js/uuid.js" | prepend: site.baseurl }}"></script>
-    <script src="{{ "/js/chart-data.js" | prepend: site.baseurl }}"></script>
+    <script src="{{ "/js/uuid.js" | prepend: site.baseurl | prepend: site.url }}"></script>
+    <script src="{{ "/js/chart-data.js" | prepend: site.baseurl | prepend: site.url }}"></script>
 
 
-    <script src="{{ "/js/custom.js" | prepend: site.baseurl }}"></script>
+    <script src="{{ "/js/custom.js" | prepend: site.baseurl | prepend: site.url }}"></script>
 
     <!-- Add map data and generators on maps page -->    
     {% if page.type == 'maps' %}
-     <script src="{{ "/js/raphael-min.js" | prepend: site.baseurl }}"></script>
-     <script src="{{ "/js/jquery.mapael.js" | prepend: site.baseurl }}"></script>
-     <script src="{{ "/js/china_map.js" | prepend: site.baseurl }}"></script>
+     <script src="{{ "/js/raphael-min.js" | prepend: site.baseurl | prepend: site.url }}"></script>
+     <script src="{{ "/js/jquery.mapael.js" | prepend: site.baseurl | prepend: site.url }}"></script>
+     <script src="{{ "/js/china_map.js" | prepend: site.baseurl | prepend: site.url }}"></script>
    
-     <script src="{{ "/js/maps_helper.js" | prepend: site.baseurl }}"></script>
-     <script src="{{ "/js/maps_init.js" | prepend: site.baseurl }}"></script>
+     <script src="{{ "/js/maps_helper.js" | prepend: site.baseurl | prepend: site.url }}"></script>
+     <script src="{{ "/js/maps_init.js" | prepend: site.baseurl | prepend: site.url }}"></script>
     {% else %}
      <script src="http://code.highcharts.com/highcharts.js"></script>
      <script src="http://code.highcharts.com/highcharts-more.js"></script>
      <script src="http://code.highcharts.com/modules/exporting.js"></script>
-     <script src="{{ "/js/charts.js" | prepend: site.baseurl }}"></script>    
+     <script src="{{ "/js/charts.js" | prepend: site.baseurl | prepend: site.url }}"></script>    
     {% endif %}
 
   </body>
