@@ -11,11 +11,12 @@ type: charts
         <a href="javascript:void(0);" id="chart-instructions" class="chart-instructions" data-toggle="popover" 
             data-placement="left" data-content="
             <ul style='padding-left: 20px; text-align: left;'>
-                <li>Click/touch small circles in the chart to scroll down to corresponding philanthropist.</li>
-                <li>Hover/touch the large circles to reveal more details.</li>
-                <li>Click/touch industry colors below chart to hide/show all philanthopists from that industry.</li>
+                <li>Click each industry label under the X axis to add/remove from the chart.</li>
+                <li>Click each circle to view corresponding philanthropist.</li>
+                <li>Then hover over each philanthropist’s circle to view their details.</li>
+                <li>Scroll down to see the complete list of Top 100 Philanthropists.</li>
             </ul>">
-            Help <i class="fa fa-question-circle"></i>
+            Quick guide <i class="fa fa-list"></i>
         </a>
         <div class="chart-wrapper">
             <div id="series_chart_div">
@@ -39,21 +40,36 @@ type: charts
                 </a>
                 
                 <a href="?focus" class="chart-option" data-chart-name="by Focus Areas" data-chart-type="focus" data-chart-action="get_focus_data()">
-                    <span>Charitable Causes <small data-toggle="tooltip" title="Charitable Causes represent the number of causes a philanthropist supports.<br><br>Education is the most popular cause of choice. Despite the acute environmental challenges facing China in 2015, environmental causes rank last in funding received."><i class="fa fa-info-circle"></i></small></span>
+                    <span>Charitable Causes <small data-toggle="tooltip" title="
+                         <ul style='padding-left: 15px; text-align: left;'>
+                            <li>Charitable Causes represent the number of causes a philanthropist supports.</li>
+                            <li>Education is the most popular cause of choice.</li>
+                            <li>Despite the acute environmental challenges facing China in 2015, environmental causes rank last in funding received.</li>
+                         </ul>"><i class="fa fa-info-circle"></i></small></span>
                 </a>
-            
+
+
                 <a href="?industry" class="chart-option" data-chart-name="by Industries" data-chart-type="industry" data-chart-action="get_industry_data()">
-                    <span>Industry <small data-toggle="tooltip" title="Most philanthropists hail from the real estate sector. Nearly a third of the country's top 100 donors come from the industry, followed by Manufacturing (19), Consumer (14) and Technology (13)."><i class="fa fa-info-circle"></i></small></span>
+                    <span>Industry <small data-toggle="tooltip" title="
+                         <ul style='padding-left: 15px; text-align: left;'>
+                            <li>Most philanthropists (30) hail from the Real Estate sector.</li>
+                            <li>It is followed by Manufacturing (19), Consumer (14) and Technology (13).</li>
+                         </ul>"><i class="fa fa-info-circle"></i></small></span>
                 </a>                
             
                 <a href="?age" class="chart-option" data-chart-name="by Age" data-chart-type="age" data-chart-action="get_age_data()">
-                    <span>Age <small data-toggle="tooltip" title="China’s top philanthropists average 54 years of age. In the US, average giving as a percentage of net worth increases with age."><i class="fa fa-info-circle"></i></small></span>
+                    <span>Age <small data-toggle="tooltip" title="
+                         <ul style='padding-left: 15px; text-align: left;'> 
+                            <li>Top 100 philanthropists average 54 years of age.</li>
+                         </ul>"><i class="fa fa-info-circle"></i></small></span>
                 </a>
                      
                 <a href="?months" class="chart-option" data-chart-name="Donations by months" data-chart-type="months" data-chart-action="get_months_data()">
-                    <span>Timeline <small data-toggle="tooltip" title="A total of 54 million yuan of donations with unspecified dates is not included in this chart"><i class="fa fa-info-circle"></i></small></span>
-                </a>
-            
+                    <span>Timeline <small data-toggle="tooltip" title="
+                         <ul style='padding-left: 15px; text-align: left;'> 
+                            <li>A total of 54 million yuan of donations with unspecified dates is not included in this chart.</li>
+                        </ul>"><i class="fa fa-info-circle"></i></small></span>    
+                </a>            
             </div>
         </div>
 
