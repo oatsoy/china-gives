@@ -31,6 +31,15 @@ function standart_formatter(that, str){
     return str.replace('{value}', that.value);
 }
 
+function unique_data(arr){
+    var res = [];
+    $.each(arr, function (index, item){
+        if (jQuery.inArray(item,res) < 0)
+            res.push(item);
+    });
+    return res;
+}
+
 var get_initals = function(name){
   if (is_chinese()){
     if (!chart_data_res)
@@ -95,7 +104,7 @@ var get_generosity_data = function (){
 	var industries = $.map(filtered_data, function(n,i){
 	   return n['Industry'];
 	});
-	industries = jQuery.unique(industries);
+	industries = unique_data(industries);
 	$.each(industries, function (index, industry){
 		var fetched_industrial = $.grep(filtered_data, function(n){
 								   return n['Industry'] == industry;
@@ -158,7 +167,7 @@ var get_focus_data = function (){
 	var industries = $.map(chart_data_res, function(n,i){
 	   return n['Industry'];
 	});
-	industries = jQuery.unique(industries);
+	industries = unique_data(industries);
 	$.each(industries, function (index, industry){
 		var fetched_industrial = $.grep(chart_data_res, function(n){
 								   return n['Industry'] == industry;
@@ -215,8 +224,7 @@ var get_industry_data = function (){
     var industries = $.map(chart_data_res, function(n,i){
        return n['Industry'];
     });
-    industries = jQuery.unique(industries);
-
+    industries = unique_data(industries);
 
     var get_industry_label = function (){
         return trsl(industries[this.value]);
@@ -283,7 +291,7 @@ var get_age_data = function(){
     var industries = $.map(filtered_data, function(n,i){
        return n['Industry'];
     });
-    industries = jQuery.unique(industries);
+    industries = unique_data(industries);
     $.each(industries, function (index, industry){
         var fetched_industrial = $.grep(filtered_data, function(n){
                                    return n['Industry'] == industry;
@@ -345,7 +353,7 @@ var get_focus_type_data = function (type){
     var industries = $.map(filtered_data, function(n,i){
        return n['Industry'];
     });
-    industries = jQuery.unique(industries);
+    industries = unique_data(industries);
     $.each(industries, function (index, industry){
         var fetched_industrial = $.grep(filtered_data, function(n){
                                    return n['Industry'] == industry;
