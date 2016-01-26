@@ -114,35 +114,149 @@ language: en
 </section>
 
 <section id="top-givers" class="top-givers with-nxt-sct-btn">
-
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <h2 class="section-heading">Top 10 - Generosity</h2> <span class="info" data-toggle="tooltip" title="Generosity Index measures a philanthropist’s willingness to give by dividing annual donations by the value of shares the philanthropist owns in any publicly traded companies, a proxy for his or her level of wealth."><i class="fa fa-lg fa-info-circle"></i></span>
-                <hr class="">
+    <div id="generosity">    
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Top 10 - Generosity</h2> <span class="info" data-toggle="tooltip" title="Generosity Index measures a philanthropist’s willingness to give by dividing annual donations by the value of shares the philanthropist owns in any publicly traded companies, a proxy for his or her level of wealth."><i class="fa fa-lg fa-info-circle"></i></span>
+                    <hr class="">
+                </div>
             </div>
         </div>
-    </div>
-    <div class="container">
-        <div class="row">
+        <div class="container">
+            <div class="row">
 
-        {% assign focus_number = 0 %}
-        {% assign generosity_number = 0 %}
-        {% assign industry_number = 0 %}
-        {% assign age_number = 0 %}
+            {% assign focus_number = 0 %}
+            {% assign generosity_number = 0 %}
+            {% assign industry_number = 0 %}
+            {% assign age_number = 0 %}
 
-        {% assign education_number = 0 %}
-        {% assign environment_number = 0 %}
-        {% assign healthcare_number = 0 %}
-        {% assign social_number = 0 %}
-        {% assign disaster_number = 0 %}
-        {% assign culture_number = 0 %}
+            {% assign education_number = 0 %}
+            {% assign environment_number = 0 %}
+            {% assign healthcare_number = 0 %}
+            {% assign social_number = 0 %}
+            {% assign disaster_number = 0 %}
+            {% assign culture_number = 0 %}
 
-        {% for i in (1..10) %}
-        
+            {% for i in (1..10) %}
+            
+                {% for person in site.data.persons %}
+
+                    {% if person.['GI Rank'] == i %}
+
+                        {% assign focuses = "a|b" | split: "|" %}
+                        {% if person.['Education'] > 0 %}
+                             {% assign focuses = focuses | push: "Education" %}
+                        {% endif %}
+                        {% if person.['Environment'] > 0 %}
+                             {% assign focuses = focuses | push: "Environment" %}
+                        {% endif %}
+                        {% if person.['Healthcare'] > 0 %}
+                             {% assign focuses = focuses | push: "Healthcare" %}
+                        {% endif %}
+                        {% if person.['Social Welfare'] > 0 %}
+                             {% assign focuses = focuses | push: "Social Welfare" %}
+                        {% endif %}
+                        {% if person.['Disaster Relief'] > 0 %}
+                             {% assign focuses = focuses | push: "Disaster Relief" %}
+                        {% endif %}
+                        {% if person.['Culture'] > 0 %}
+                             {% assign focuses = focuses | push: "Culture" %}
+                        {% endif %}
+
+                        {% assign focuses = focuses | array_to_sentence_string %}
+                        {% assign focuses = focuses | replace: 'a, b,', '' %}
+                        {% assign focuses = focuses | replace: 'and', '' %}
+
+                        {% assign industry_class = person.['Industry'] | split: &nbsp; %}
+                        {% assign industry_class = industry_class | join: '-' %}
+                        {% assign industry_class = industry_class | downcase %}
+                        {% assign industry_class = industry_class | replace: '/', '-' %}
+
+                        <div class="{% if i == 1 or i == 6 %}col-md-offset-1{% endif %} col-md-2 col-sm-6 col-xs-6 mg-top-25 person-box top-giver wow pulse" id="generous-person-container-{{ person.['Ranking'] }}">
+                            <div class="circle {% if person.['Bio Eng'] != 0 %}with-bio{% endif %}">
+                                <div class="circle-text {% if person.['Image URL'] != 0 %}with-bg-image{% endif %}">
+                                    {% if person.['Image URL'] != 0 %}
+                                    <div class="giver-image" style="background-image: url({{ person.['Image URL'] }});"></div>
+                                    {% else %}
+                                    <div class="person-placeholder">
+                                        <i class="fa fa-user"></i>
+                                    </div>
+                                    {% endif %}
+                                    <div class="content">
+                                        <div>{{ i }}</div>
+                                        <h4 class="card-name-container" data-name="{{ person.['Name Eng'] }}">{{ person.['Name Eng'] }}</h4>
+                                        <div>¥{{ person.['Total Amount (million Yuan)'] }} Million</div>
+                                    </div>
+                                </div>
+                                <div class="details">
+                                    <div class="content">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <ul class="no-bullets">
+                                                    <li><span class="text-muted">Age:</span> {% if person.['Age'] > 0 %} {{ person.['Age'] }} {% else %} N.A. {% endif %}</li>
+                                                    <li><span class="text-muted">Generosity:</span> {% if person.['Generosity'] != 0 %} {{person.['Generosity']}} {% else %} N.A. {% endif %}</li>
+                                                    <li><span class="text-muted">Province:</span> {% if person.['From Province'] != 0 %} {{ person.['From Province'] }} {% else %} N.A. {% endif %}</li>
+                                                    <li><span class="text-muted">Industry:</span> {{ person.['Industry'] }}</li>
+                                                    <li><span class="text-muted">Focus:</span> {{ focuses }}</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        {% if person.['Bio Eng'] != 0 %}
+                                            <div class="row bio">
+                                                <div class="col-sm-12">
+                                                    {{ person.['Bio Eng'] }}
+                                                </div>
+                                            </div>
+                                        {% endif %}                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    {% endif %}             
+
+                {% endfor %}
+
+            {% endfor %}
+            </div>
+            <div class="row">
+                <div class="col-xs-12 text-center mg-top-50">
+                    <a href="data.html?generosity" class="btn btn-primary btn-xl"><i class="fa fa-bar-chart"></i> View Data</a>
+                </div>
+            </div>
+        </div>
+    </div>    
+
+    <div id="givers">  
+        <div class="container mg-top-100">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Top 10 - Giving</h2> <span class="info" data-toggle="tooltip" title="The ten donors who gave the most to philanthropic causes in 2015."><i class="fa fa-lg fa-info-circle"></i></span>
+                    <hr class="">
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+            {% assign a = 0 %}
+            {% assign b = 1 %}
+
+            {% assign focus_number = 0 %}
+            {% assign generosity_number = 0 %}
+            {% assign industry_number = 0 %}
+            {% assign age_number = 0 %}
+
+            {% assign education_number = 0 %}
+            {% assign environment_number = 0 %}
+            {% assign healthcare_number = 0 %}
+            {% assign social_number = 0 %}
+            {% assign disaster_number = 0 %}
+            {% assign culture_number = 0 %}
+
             {% for person in site.data.persons %}
 
-                {% if person.['GI Rank'] == i %}
+                {% if b <= 10 %}
 
                     {% assign focuses = "a|b" | split: "|" %}
                     {% if person.['Education'] > 0 %}
@@ -172,217 +286,107 @@ language: en
                     {% assign industry_class = industry_class | join: '-' %}
                     {% assign industry_class = industry_class | downcase %}
                     {% assign industry_class = industry_class | replace: '/', '-' %}
-
-                    <div class="{% if i == 1 or i == 6 %}col-md-offset-1{% endif %} col-md-2 col-sm-6 col-xs-6 mg-top-25 person-box top-giver wow pulse" id="generous-person-container-{{ person.['Ranking'] }}">
-                        <div class="circle {% if person.['Bio Eng'] != 0 %}with-bio{% endif %}">
-                            <div class="circle-text {% if person.['Image URL'] != 0 %}with-bg-image{% endif %}">
-                                {% if person.['Image URL'] != 0 %}
-                                <div class="giver-image" style="background-image: url({{ person.['Image URL'] }});"></div>
-                                {% else %}
-                                <div class="person-placeholder">
-                                    <i class="fa fa-user"></i>
-                                </div>
-                                {% endif %}
-                                <div class="content">
-                                    <div>{{ i }}</div>
-                                    <h4 class="card-name-container" data-name="{{ person.['Name Eng'] }}">{{ person.['Name Eng'] }}</h4>
-                                    <div>¥{{ person.['Total Amount (million Yuan)'] }} Million</div>
-                                </div>
-                            </div>
-                            <div class="details">
-                                <div class="content">
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                            <ul class="no-bullets">
-                                                <li><span class="text-muted">Age:</span> {% if person.['Age'] > 0 %} {{ person.['Age'] }} {% else %} N.A. {% endif %}</li>
-                                                <li><span class="text-muted">Generosity:</span> {% if person.['Generosity'] != 0 %} {{person.['Generosity']}} {% else %} N.A. {% endif %}</li>
-                                                <li><span class="text-muted">Province:</span> {% if person.['From Province'] != 0 %} {{ person.['From Province'] }} {% else %} N.A. {% endif %}</li>
-                                                <li><span class="text-muted">Industry:</span> {{ person.['Industry'] }}</li>
-                                                <li><span class="text-muted">Focus:</span> {{ focuses }}</li>
-                                            </ul>
-                                        </div>
+                        <div class="{% if b == 1 or b == 6 %}col-md-offset-1{% endif %} col-md-2 col-sm-6 col-xs-6 mg-top-25 person-box top-giver wow pulse" id="person-container-{{ person.['Ranking'] }}">
+                            <div class="circle {% if person.['Bio Eng'] != 0 %}with-bio{% endif %}">
+                                <div class="circle-text {% if person.['Image URL'] != 0 %}with-bg-image{% endif %}">
+                                    {% if person.['Image URL'] != 0 %}
+                                    <div class="giver-image" style="background-image: url({{ person.['Image URL'] }});"></div>
+                                    {% else %}
+                                    <div class="person-placeholder">
+                                        <i class="fa fa-user"></i>
                                     </div>
-                                    {% if person.['Bio Eng'] != 0 %}
-                                        <div class="row bio">
+                                    {% endif %}
+                                    <div class="content">
+                                        <div>{{ b }}</div>
+                                        <h4 class="card-name-container" data-name="{{ person.['Name Eng'] }}">{{ person.['Name Eng'] }}</h4>
+                                        <div>¥{{ person.['Total Amount (million Yuan)'] }} Million</div>
+                                    </div>
+                                </div>
+                                <div class="details">
+                                    <div class="content">
+                                        <div class="row">
                                             <div class="col-sm-12">
-                                                {{ person.['Bio Eng'] }}
+                                                <ul class="no-bullets">
+                                                    <li><span class="text-muted">Age:</span> {% if person.['Age'] > 0 %} {{ person.['Age'] }} {% else %} N.A. {% endif %}</li>
+                                                    <li><span class="text-muted">Generosity:</span> {% if person.['Generosity'] != 0 %} {{person.['Generosity']}} {% else %} N.A. {% endif %}</li>
+                                                    <li><span class="text-muted">Province:</span> {% if person.['From Province'] != 0 %} {{ person.['From Province'] }} {% else %} N.A. {% endif %}</li>
+                                                    <li><span class="text-muted">Industry:</span> {{ person.['Industry'] }}</li>
+                                                    <li><span class="text-muted">Focus:</span> {{ focuses }}</li>
+                                                </ul>
                                             </div>
                                         </div>
-                                    {% endif %}                                        
+                                        {% if person.['Bio Eng'] != 0 %}
+                                            <div class="row bio">
+                                                <div class="col-sm-12">
+                                                    {{ person.['Bio Eng'] }}
+                                                </div>
+                                            </div>
+                                        {% endif %}   
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                        </div>            
 
-                {% endif %}             
+                    {% if a == 9%}
+                        {% assign a = 0 %}
+                    {% else %}
+                        {% assign a = a | plus: 1 %} 
+                    {% endif %}
+                    {% assign b = b | plus: 1 %}
+                    {% if focuses != '' %}
+                        {% assign focus_number = focus_number | plus: 1  %}
+                    {% endif %}   
+                    {% if person.['Generosity'] != 0 %}
+                        {% assign generosity_number = generosity_number | plus: 1  %}
+                    {% endif %} 
+                    {% if person.['Industry'] != 0 %}
+                        {% assign industry_number = industry_number | plus: 1  %}
+                    {% endif %} 
+                    {% if person.['Age'] > 0 %}
+                        {% assign age_number = age_number | plus: 1  %}
+                    {% endif %} 
+
+                    {% if person.['Education'] > 0 %}
+                         {% assign education_number = education_number | plus: 1  %}
+                    {% endif %}
+                    {% if person.['Environment'] > 0 %}
+                         {% assign environment_number = environment_number | plus: 1  %}
+                    {% endif %}
+                    {% if person.['Healthcare'] > 0 %}
+                         {% assign healthcare_number = healthcare_number | plus: 1  %}
+                    {% endif %}
+                    {% if person.['Social Welfare'] > 0 %}
+                         {% assign social_number = social_number | plus: 1  %}
+                    {% endif %}
+                    {% if person.['Disaster Relief'] > 0 %}
+                         {% assign disaster_number = disaster_number | plus: 1  %}
+                    {% endif %}
+                    {% if person.['Culture'] > 0 %}
+                         {% assign culture_number = culture_number | plus: 1  %}
+                    {% endif %}
+
+                {% endif %}                
 
             {% endfor %}
-
-        {% endfor %}
-        </div>
-        <div class="row">
-            <div class="col-xs-12 text-center mg-top-50">
-                <a href="data.html?generosity" class="btn btn-primary btn-xl"><i class="fa fa-bar-chart"></i> View Data</a>
             </div>
-        </div>
-    </div>
-
-    <div class="container mg-top-100">
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <h2 class="section-heading">Top 10 - Giving</h2> <span class="info" data-toggle="tooltip" title="The ten donors who gave the most to philanthropic causes in 2015."><i class="fa fa-lg fa-info-circle"></i></span>
-                <hr class="">
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="row">
-        {% assign a = 0 %}
-        {% assign b = 1 %}
-
-        {% assign focus_number = 0 %}
-        {% assign generosity_number = 0 %}
-        {% assign industry_number = 0 %}
-        {% assign age_number = 0 %}
-
-        {% assign education_number = 0 %}
-        {% assign environment_number = 0 %}
-        {% assign healthcare_number = 0 %}
-        {% assign social_number = 0 %}
-        {% assign disaster_number = 0 %}
-        {% assign culture_number = 0 %}
-
-        {% for person in site.data.persons %}
-
-            {% if b <= 10 %}
-
-                {% assign focuses = "a|b" | split: "|" %}
-                {% if person.['Education'] > 0 %}
-                     {% assign focuses = focuses | push: "Education" %}
-                {% endif %}
-                {% if person.['Environment'] > 0 %}
-                     {% assign focuses = focuses | push: "Environment" %}
-                {% endif %}
-                {% if person.['Healthcare'] > 0 %}
-                     {% assign focuses = focuses | push: "Healthcare" %}
-                {% endif %}
-                {% if person.['Social Welfare'] > 0 %}
-                     {% assign focuses = focuses | push: "Social Welfare" %}
-                {% endif %}
-                {% if person.['Disaster Relief'] > 0 %}
-                     {% assign focuses = focuses | push: "Disaster Relief" %}
-                {% endif %}
-                {% if person.['Culture'] > 0 %}
-                     {% assign focuses = focuses | push: "Culture" %}
-                {% endif %}
-
-                {% assign focuses = focuses | array_to_sentence_string %}
-                {% assign focuses = focuses | replace: 'a, b,', '' %}
-                {% assign focuses = focuses | replace: 'and', '' %}
-
-                {% assign industry_class = person.['Industry'] | split: &nbsp; %}
-                {% assign industry_class = industry_class | join: '-' %}
-                {% assign industry_class = industry_class | downcase %}
-                {% assign industry_class = industry_class | replace: '/', '-' %}
-                    <div class="{% if b == 1 or b == 6 %}col-md-offset-1{% endif %} col-md-2 col-sm-6 col-xs-6 mg-top-25 person-box top-giver wow pulse" id="person-container-{{ person.['Ranking'] }}">
-                        <div class="circle {% if person.['Bio Eng'] != 0 %}with-bio{% endif %}">
-                            <div class="circle-text {% if person.['Image URL'] != 0 %}with-bg-image{% endif %}">
-                                {% if person.['Image URL'] != 0 %}
-                                <div class="giver-image" style="background-image: url({{ person.['Image URL'] }});"></div>
-                                {% else %}
-                                <div class="person-placeholder">
-                                    <i class="fa fa-user"></i>
-                                </div>
-                                {% endif %}
-                                <div class="content">
-                                    <div>{{ b }}</div>
-                                    <h4 class="card-name-container" data-name="{{ person.['Name Eng'] }}">{{ person.['Name Eng'] }}</h4>
-                                    <div>¥{{ person.['Total Amount (million Yuan)'] }} Million</div>
-                                </div>
-                            </div>
-                            <div class="details">
-                                <div class="content">
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                            <ul class="no-bullets">
-                                                <li><span class="text-muted">Age:</span> {% if person.['Age'] > 0 %} {{ person.['Age'] }} {% else %} N.A. {% endif %}</li>
-                                                <li><span class="text-muted">Generosity:</span> {% if person.['Generosity'] != 0 %} {{person.['Generosity']}} {% else %} N.A. {% endif %}</li>
-                                                <li><span class="text-muted">Province:</span> {% if person.['From Province'] != 0 %} {{ person.['From Province'] }} {% else %} N.A. {% endif %}</li>
-                                                <li><span class="text-muted">Industry:</span> {{ person.['Industry'] }}</li>
-                                                <li><span class="text-muted">Focus:</span> {{ focuses }}</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    {% if person.['Bio Eng'] != 0 %}
-                                        <div class="row bio">
-                                            <div class="col-sm-12">
-                                                {{ person.['Bio Eng'] }}
-                                            </div>
-                                        </div>
-                                    {% endif %}   
-                                </div>
-                            </div>
-                        </div>
-                    </div>            
-
-                {% if a == 9%}
-                    {% assign a = 0 %}
-                {% else %}
-                    {% assign a = a | plus: 1 %} 
-                {% endif %}
-                {% assign b = b | plus: 1 %}
-                {% if focuses != '' %}
-                    {% assign focus_number = focus_number | plus: 1  %}
-                {% endif %}   
-                {% if person.['Generosity'] != 0 %}
-                    {% assign generosity_number = generosity_number | plus: 1  %}
-                {% endif %} 
-                {% if person.['Industry'] != 0 %}
-                    {% assign industry_number = industry_number | plus: 1  %}
-                {% endif %} 
-                {% if person.['Age'] > 0 %}
-                    {% assign age_number = age_number | plus: 1  %}
-                {% endif %} 
-
-                {% if person.['Education'] > 0 %}
-                     {% assign education_number = education_number | plus: 1  %}
-                {% endif %}
-                {% if person.['Environment'] > 0 %}
-                     {% assign environment_number = environment_number | plus: 1  %}
-                {% endif %}
-                {% if person.['Healthcare'] > 0 %}
-                     {% assign healthcare_number = healthcare_number | plus: 1  %}
-                {% endif %}
-                {% if person.['Social Welfare'] > 0 %}
-                     {% assign social_number = social_number | plus: 1  %}
-                {% endif %}
-                {% if person.['Disaster Relief'] > 0 %}
-                     {% assign disaster_number = disaster_number | plus: 1  %}
-                {% endif %}
-                {% if person.['Culture'] > 0 %}
-                     {% assign culture_number = culture_number | plus: 1  %}
-                {% endif %}
-
-            {% endif %}                
-
-        {% endfor %}
-        </div>
-        <div class="row">
-            <div class="col-xs-12 text-center mg-top-50">
-                <a href="data.html?generosity#people" class="btn btn-primary btn-xl"><i class="fa fa-users"></i> View Full List</a>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="text-center mg-top-50">
-                    <a href="#location" class="next-section dark page-scroll">
-                        Highlights<br>
-                        <i class="fa fa-angle-down wow slideOutDown infinite"></i>
-                    </a>
+            <div class="row">
+                <div class="col-xs-12 text-center mg-top-50">
+                    <a href="data.html?generosity#people" class="btn btn-primary btn-xl"><i class="fa fa-users"></i> View Full List</a>
                 </div>
-            </div>    
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="text-center mg-top-50">
+                        <a href="#location" class="next-section dark page-scroll">
+                            Highlights<br>
+                            <i class="fa fa-angle-down wow slideOutDown infinite"></i>
+                        </a>
+                    </div>
+                </div>    
+            </div>
         </div>
     </div>
+    
 </section>
 
 <section id="location" class="location bg-dark bg-image wow fadeIn">
