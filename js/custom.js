@@ -117,7 +117,21 @@ function check_scroll_to_people(){
     }
 }
 
+function replaceGoogleCDN() {
+    $('link').each(function(){
+        var $intial  = $(this).attr('href'),
+                $replace = $intial.replace('//fonts.googleapis.com/', '//fonts.useso.com/');
+                $(this).attr('href', $replace);
+    });
+}
+
 $(function (){
+
+  $.getJSON('http://api.wipmania.com/jsonp?callback=?', function (data) { 
+      if ( data.address.country_code == 'CN' ) {
+          replaceGoogleCDN();
+      }
+  });
 
   if (is_charts()){
 
